@@ -28,3 +28,5 @@ newApiFetches
     console.log('Details ', data);
   })
   .catch(error => console.log(error));
+
+// ================================
