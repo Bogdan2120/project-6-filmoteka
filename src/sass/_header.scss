@@ -165,3 +165,56 @@
     color: #ffffff;
   }
 }
+
+.navigation__button.current {
+  position: relative;
+}
+.navigation__button.current::after {
+  position: absolute;
+  top: 13px;
+  display: block;
+  content: '';
+  height: 3px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.navigation__button {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: inherit;
+  &:hover {
+    transition: color 300ms;
+  }
+}
+#googleUser {
+  @media screen and (max-width: 767px) {
+    margin-left: 0px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-left: 10px;
+  }
+}
+
+.navigation__button.signOut {
+  display: none;
+}
+
+.navigation__button.signIn {
+  display: block;
+}
+
+.navigation__item.sign-in {
+  @media screen and (max-width: 767px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: unset;
+  }
+}
