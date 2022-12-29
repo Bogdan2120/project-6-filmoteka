@@ -1,4 +1,4 @@
-import NewApiFetches from './js/apiFetches';
+import NewApiFetches from './apiFetches';
 import * as basicLightbox from 'basiclightbox';
 const newApiFetches = new NewApiFetches();
 
@@ -6,7 +6,7 @@ const newApiFetches = new NewApiFetches();
 newApiFetches
   .fetchTrendingMovie()
   .then(data => {
-    console.log('Trending ', data);
+    // console.log('Trending ', data);
   })
   .catch(error => console.log(error));
 
@@ -14,7 +14,7 @@ newApiFetches
 newApiFetches
   .fetchPopularMovie()
   .then(data => {
-    console.log('Popular ', data);
+    // console.log('Popular ', data);
   })
   .catch(error => console.log(error));
 
@@ -23,7 +23,7 @@ newApiFetches
 newApiFetches
   .fetchSearchMovie('max', 1)
   .then(data => {
-    console.log('Search ', data);
+    // console.log('Search ', data);
   })
   .catch(error => console.log(error));
 
@@ -32,7 +32,7 @@ newApiFetches
 newApiFetches
   .fetchDetailsMovie(76600)
   .then(data => {
-    console.log('Details ', data);
+    // console.log('Details ', data);
   })
   .catch(error => console.log(error));
 
@@ -42,11 +42,11 @@ const list = document.querySelector('body');
 newApiFetches
   .fetchTrailerMovie(76341)
   .then(data => {
-    console.log('Trailer ', data.results);
+    // console.log('Trailer ', data.results);
     const id = data.results[0].key;
     const instance = basicLightbox.create(`
   <iframe width="560" height="315" src='https://www.youtube.com/embed/${id}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `);
-    instance.show();
+    // instance.show();
   })
   .catch(error => console.log(error));
