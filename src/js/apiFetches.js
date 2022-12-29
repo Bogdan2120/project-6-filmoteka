@@ -97,11 +97,25 @@ export default class NewApiFetches {
     requestDetails.vote_average = response.data.vote_average;
     requestDetails.vote_count = response.data.vote_count;
     requestDetails.popularity = response.data.popularity;
-    requestDetails.original_title = response.data.original_title;
-    requestDetails.overview = response.data.overview;
+    requestDetails.original_title = response.data.original_title
+      ? response.data.original_title
+      : 'n/a';
+    requestDetails.overview = response.data.overview
+      ? response.data.overview
+      : 'n/a';
     requestDetails.genres = response.data.genres.map(gen => {
       return gen.name;
     });
     return requestDetails;
+  }
+
+  async fetchTrailerMovie(value) {
+    const response = await axios.get(
+      `${URL}/movie/${value}/videos?api_key=${KEY}&language=en-US`
+    );
+    if (response.status !== 200) {
+      throw new Error(response.status);
+    }
+    return response.data;
   }
 }
