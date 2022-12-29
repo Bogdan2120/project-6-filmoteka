@@ -1,9 +1,11 @@
-@import './home_header';
-@import './home_cards';
+@import './normalize';
+@import './base';
+
+@import './header';
 
 @import './library_heder';
-@import './library_cards';
 
+@import './cards';
 @import './footer';
 
 @import './modal-window';
