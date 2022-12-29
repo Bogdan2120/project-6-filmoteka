@@ -1,0 +1,98 @@
+.header {
+  height: 230px;
+  background: url(../images/page_library/bg_header_library_mobile.jpg)
+    rgba(0, 0, 0, 0.56);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 40px 20px 0;
+  margin-bottom: 20px;
+  opacity: 90%;
+
+  @media screen and (min-device-pixel-ratio: 2) and (max-width: 767px),
+    screen and (min-resolution: 192dpi) and (max-width: 767px),
+    screen and (min-resolution: 2dppx) and (max-width: 767px) {
+    background: url(../images/page_library/bg_header_library_mobile@2.jpg)
+      rgba(0, 0, 0, 0.56);
+  }
+
+  @media screen and (min-width: 768px) {
+    height: 216px;
+    background: url(../images/page_library/bg_header_library_tablet.jpg)
+      rgba(0, 0, 0, 0.56);
+    padding: 40px 32px 0;
+  }
+
+  @media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
+    screen and (min-resolution: 192dpi) and (min-width: 768px),
+    screen and (min-resolution: 2dppx) and (min-width: 768px) {
+    background: url(../images/page_library/bg_header_library_tablet@2.jpg)
+      rgba(0, 0, 0, 0.56);
+  }
+
+  @media screen and (min-width: 1280px) {
+    height: 216px;
+    background: url(../images/page_library/bg_header_library_descktop.jpg)
+      rgba(0, 0, 0, 0.56);
+    padding: 40px 32px 0;
+  }
+
+  @media screen and (min-device-pixel-ratio: 2) and (min-width: 1280px),
+    screen and (min-resolution: 192dpi) and (min-width: 1280px),
+    screen and (min-resolution: 2dppx) and (min-width: 1280px) {
+    background: url(../images/page_library/bg_header_library_descktop@2.jpg)
+      rgba(0, 0, 0, 0.56);
+  }
+}
+
+// .header-top {
+//   display: flex;
+//   justify-content: space-between;
+
+//   margin-bottom: 56px;
+// }
+
+.btn-container {
+  display: flex;
+  column-gap: 20px;
+
+  @media screen and (min-width: 768px) {
+    justify-content: center;
+  }
+}
+
+.btn-header {
+  width: calc((100% - 20px) / 2);
+  height: 44px;
+
+  background: rgba(0, 0, 0, 0);
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(16 / 12);
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+
+  color: #ffffff;
+  &:hover,
+  &:focus {
+    border: 1px solid #ff6b01;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 152px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 148px;
+  }
+}
+
+.btn-header__active {
+  background: #ff6b01;
+  border: 0;
+}
