@@ -1,14 +1,15 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCUNUISB4BvcdddHlHx25A-P_y0LZzRomY",
-  authDomain: "filmoteka-auth-a4ede.firebaseapp.com",
-  projectId: "filmoteka-auth-a4ede",
-  storageBucket: "filmoteka-auth-a4ede.appspot.com",
-  messagingSenderId: "560359018182",
-  appId: "1:560359018182:web:a6a1195c4f88a57c7011c7"
-};
+ const firebaseConfig = {
+    apiKey: "AIzaSyBAxD1d6Q1iAwziX2Na8ubQZJCLhj-Pvhg",
+    authDomain: "project-b3c7f.firebaseapp.com",
+    databaseURL: "https://project-b3c7f-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "project-b3c7f",
+    storageBucket: "project-b3c7f.appspot.com",
+    messagingSenderId: "815844014735",
+    appId: "1:815844014735:web:4184be206f1dcdb43b4efa"
+  };
 firebase.initializeApp(firebaseConfig);
 
 const login = document.getElementById('signin').addEventListener('click', signinUser);
