@@ -57,7 +57,6 @@ newApiFetches
 const handleSubmit = e => {
   e.preventDefault();
   const form = e.currentTarget;
-  console.log(form.elements);
   const searchQuery = form.elements.query.value.trim();
 
   newApiFetches
@@ -65,10 +64,12 @@ const handleSubmit = e => {
     .then(data => {
       if (data.length === 0) {
         Notiflix.Notify.failure('Sorry! There is no movies with this title');
+        form.elements.query.value = '';
         return;
       }
       clearMarkup();
       renderMoviesListTemplate(data);
+      form.elements.query.value = '';
     })
     .catch(error => console.log(error));
 };
