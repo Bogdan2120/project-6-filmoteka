@@ -1,4 +1,4 @@
-import NewApiFetches from './apiFetches';
+import NewApiFetches from './js/apiFetches';
 import Notiflix from 'notiflix';
 import Pagination from 'tui-pagination'; //add for pagination
 import 'tui-pagination/dist/tui-pagination.css'; //add for pagination
