@@ -1,4 +1,4 @@
-import NewApiFetches from './js/apiFetches';
+import NewApiFetches from './apiFetches';
 import Notiflix from 'notiflix';
 import Pagination from 'tui-pagination'; //add for pagination
 import 'tui-pagination/dist/tui-pagination.css'; //add for pagination
@@ -65,7 +65,6 @@ const handleSubmit = e => {
 
   const searchQuery = form.elements.query.value.trim();
 
-
   newApiFetches
     .fetchSearchMovie(searchQuery, 1)
     .then(data => {
@@ -83,14 +82,12 @@ const handleSubmit = e => {
       clearMarkup();
       renderMoviesListTemplate(data);
 
-
       pagination.off('beforeMove', loadMoreFilms); //add for pagination
       pagination.on('beforeMove', loadMoreFilms); //add for pagination
       pagination.reset(); //add for pagination
       refs.pagination.classList.remove('is-hidden'); //add for pagination
 
       form.elements.query.value = '';
-
     })
     .catch(error => console.log(error));
 };
