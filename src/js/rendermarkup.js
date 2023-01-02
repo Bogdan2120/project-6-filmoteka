@@ -1,4 +1,4 @@
-import NewApiFetches from './js/apiFetches';
+import NewApiFetches from './apiFetches';
 import Notiflix from 'notiflix';
 const newApiFetches = new NewApiFetches();
 
