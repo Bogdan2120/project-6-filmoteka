@@ -20,6 +20,8 @@ export default class NewApiFetches {
     }
     response.data.results.map(el => {
       requestArray.push({
+        total_pages: response.data.total_pages,
+        total_results: response.data.total_results,
         id: el.id,
         poster_path: `https://www.themoviedb.org/t/p/w300_and_h450_bestv2${el.poster_path}`,
         title: el.title,
@@ -42,6 +44,8 @@ export default class NewApiFetches {
     }
     response.data.results.map(el => {
       requestArray.push({
+        total_pages: response.data.total_pages,
+        total_results: response.data.total_results,
         id: el.id,
         poster_path: `https://www.themoviedb.org/t/p/w300_and_h450_bestv2${el.poster_path}`,
         title: el.title,
@@ -66,8 +70,12 @@ export default class NewApiFetches {
     if (response.status !== 200) {
       throw new Error(response.status);
     }
+    console.log('RESP ', response);
+
     response.data.results.map(el => {
       requestArray.push({
+        total_pages: response.data.total_pages,
+        total_results: response.data.total_results,
         id: el.id,
         poster_path: `https://www.themoviedb.org/t/p/w300_and_h450_bestv2${el.poster_path}`,
         title: el.title,

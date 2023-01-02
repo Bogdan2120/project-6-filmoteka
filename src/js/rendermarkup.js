@@ -62,8 +62,9 @@ newApiFetches
 const handleSubmit = e => {
   e.preventDefault();
   const form = e.currentTarget;
-  console.log(form.elements);
-  searchQuery = form.elements.query.value.trim();
+
+  const searchQuery = form.elements.query.value.trim();
+
 
   newApiFetches
     .fetchSearchMovie(searchQuery, 1)
@@ -76,15 +77,20 @@ const handleSubmit = e => {
         }
         //  ----------------------} add for pagination -----------------------
         Notiflix.Notify.failure('Sorry! There is no movies with this title');
+        form.elements.query.value = '';
         return;
       }
       clearMarkup();
       renderMoviesListTemplate(data);
 
+
       pagination.off('beforeMove', loadMoreFilms); //add for pagination
       pagination.on('beforeMove', loadMoreFilms); //add for pagination
       pagination.reset(); //add for pagination
       refs.pagination.classList.remove('is-hidden'); //add for pagination
+
+      form.elements.query.value = '';
+
     })
     .catch(error => console.log(error));
 };

@@ -1,5 +1,6 @@
 import NewApiFetches from './apiFetches';
 import * as basicLightbox from 'basiclightbox';
+
 const newApiFetches = new NewApiFetches();
 
 // ------------ Tranding films for SLIDERS -----
