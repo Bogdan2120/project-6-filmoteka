@@ -11,7 +11,7 @@ const refs = {
   pagination: document.querySelector('.tui-pagination'), //add for pagination
 };
 let searchQuery = ''; //зробив глобальною, бо потрібна в файлі пагінації (add for pagination)
-
+let totalItems = 0;
 const clearMarkup = () => {
   refs.gallery.innerHTML = '';
 };
@@ -44,7 +44,7 @@ const renderMoviesListTemplate = moviesArray => {
       `;
     })
     .join('');
-
+  clearMarkup();
   refs.gallery.insertAdjacentHTML('beforeend', markupMoviesList);
 };
 
@@ -63,8 +63,7 @@ const handleSubmit = e => {
   e.preventDefault();
   const form = e.currentTarget;
 
-  const searchQuery = form.elements.query.value.trim();
-
+  searchQuery = form.elements.query.value.trim();
 
   newApiFetches
     .fetchSearchMovie(searchQuery, 1)
@@ -80,9 +79,10 @@ const handleSubmit = e => {
         form.elements.query.value = '';
         return;
       }
+      totalItems = data[0].total_results;
+      const pagination = new Pagination(refs.pagination, getOptions());
       clearMarkup();
       renderMoviesListTemplate(data);
-
 
       pagination.off('beforeMove', loadMoreFilms); //add for pagination
       pagination.on('beforeMove', loadMoreFilms); //add for pagination
@@ -90,39 +90,38 @@ const handleSubmit = e => {
       refs.pagination.classList.remove('is-hidden'); //add for pagination
 
       form.elements.query.value = '';
-
     })
     .catch(error => console.log(error));
 };
 refs.searchForm.addEventListener('submit', handleSubmit);
 
 //--------------------------- pagination option -----------------------------------
-const options = {
-  totalItems: 250,
-  itemsPerPage: 20,
-  visiblePages: 7,
-  page: 1,
-  centerAlign: true,
-  template: {
-    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-    currentPage:
-      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-    moveButton:
-      '<a href="#" class="tui-page-btn tui-{{type}} custom-class-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</a>',
-    disabledMoveButton:
-      '<span class="tui-page-btn tui-is-disabled tui-{{type}} custom-class-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</span>',
-    moreButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip custom-class-{{type}}">' +
-      '<span class="tui-ico-ellip">...</span>' +
-      '</a>',
-  },
-};
-
-const pagination = new Pagination(refs.pagination, options);
+function getOptions() {
+  return {
+    totalItems: `${totalItems}`,
+    itemsPerPage: 20,
+    visiblePages: 3,
+    page: 1,
+    centerAlign: true,
+    template: {
+      page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+      currentPage:
+        '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+      moveButton:
+        '<a href="#" class="tui-page-btn tui-{{type}} custom-class-{{type}}">' +
+        '<span class="tui-ico-{{type}}">{{type}}</span>' +
+        '</a>',
+      disabledMoveButton:
+        '<span class="tui-page-btn tui-is-disabled tui-{{type}} custom-class-{{type}}">' +
+        '<span class="tui-ico-{{type}}">{{type}}</span>' +
+        '</span>',
+      moreButton:
+        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip custom-class-{{type}}">' +
+        '<span class="tui-ico-ellip">...</span>' +
+        '</a>',
+    },
+  };
+}
 
 function loadMoreFilms(e) {
   const currentPage = e.page;
@@ -131,7 +130,6 @@ function loadMoreFilms(e) {
     .fetchSearchMovie(searchQuery, currentPage)
     .then(data => {
       renderMoviesListTemplate(data);
-      console.log('Search ', data);
     })
     .catch(error => console.log(error));
 }
