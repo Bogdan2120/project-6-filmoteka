@@ -106,7 +106,7 @@ function getOptions() {
     template: {
       page: '<a href="#" class="tui-page-btn">{{page}}</a>',
       currentPage:
-        '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+        '<strong class="tui-page-btn tui-is-selected tui-page-btn-color">{{page}}</strong>',
       moveButton:
         '<a href="#" class="tui-page-btn tui-{{type}} custom-class-{{type}}">' +
         '<span class="tui-ico-{{type}}">{{type}}</span>' +
