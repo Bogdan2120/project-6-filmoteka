@@ -1,10 +1,16 @@
+import oleHxOleksuk from '../images/team-photo/Oleh-Oleksuk.jpg';
+import olehKosminin from '../images/team-photo/Oleh_Kosminin.jpg';
+import alexBondarchuck from '../images/team-photo/Oleksandr_Bondarchyck.jpg';
+import serheiToronchenko from '../images/team-photo/Serhei_Torochencko.png';
+import vadimRafalsciy from '../images/team-photo/Vadim-Rafalsciy.jpg';
+
 export const teamItem = [
   {
     name: 'Олег Олексюк',
     howDo: 'Слайдер, авторизація, трейлер',
     position: 'developer',
     gitHub: 'https://github.com/oleHxOleksuk',
-    previewImg: '/Oleh-Oleksuk.e9e5cc97.jpg',
+    previewImg: oleHxOleksuk,
     largeImg: '№',
   },
   {
@@ -12,31 +18,31 @@ export const teamItem = [
     howDo: 'Блок "Вам може сподобатись" в library',
     position: 'developer',
     gitHub: 'https://github.com/LexBondarchyk',
-    previewImg: '/Oleksandr_Bondarchyck.0b546d4f.jpg',
-    largeImg: '/Oleksandr_Bondarchyck.0b546d4f.jpg',
+    previewImg: alexBondarchuck,
+    largeImg: '№',
   },
   {
     name: 'Serhei Toronchenko',
     howDo: 'API Class (axios/fetch)',
     position: 'developer',
     gitHub: 'https://github.com/ertyhd',
-    previewImg: '/Serhei_Torochencko.8c191988.png',
-    largeImg: '/Serhei_Torochencko.8c191988.png',
+    previewImg: serheiToronchenko,
+    largeImg: '№',
   },
   {
     name: 'Вадим  Рафальський',
     howDo: 'Modal window (LocalStorage)',
     position: 'developer',
     gitHub: 'https://github.com/Vadim-Rafalskiy',
-    previewImg: '/Vadim-Rafalsciy.7d916a3b.jpg',
-    largeImg: '/Vadim-Rafalsciy.7d916a3b.jpg',
+    previewImg: vadimRafalsciy,
+    largeImg: '№',
   },
   {
     name: 'Олег Космінін',
     howDo: 'Make: Footer,modal with team',
     position: 'developer',
     gitHub: 'https://https://github.com/OlehKosminin',
-    previewImg: '/Oleh_Kosminin.bddab0d1.jpg',
-    largeImg: '/Oleh_Kosminin.bddab0d1.jpg',
+    previewImg: olehKosminin,
+    largeImg: '№',
   },
 ];
