@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { refs } from './my-library';
-// import { renderMoviesListTemplate } from './rendermarkup';
+import { renderMoviesList } from './render';
 
 // config
 const firebaseConfig = {
@@ -16,7 +16,8 @@ const firebaseConfig = {
 };
 
 initializeApp(firebaseConfig);
-// get database from Firebase
+
+// get database from Firebase and render
 const db = getFirestore();
 
 const collectionWatchedRef = collection(db, 'Watched');
@@ -32,6 +33,7 @@ export function loadWatchedFilms() {
           return;
         }
         refs.defaultText.classList.add('is-hiden');
+        renderMoviesList(watched);
         console.log(watched);
       });
     })
@@ -48,6 +50,7 @@ export function loadQueueFilms() {
           return;
         }
         refs.defaultText.classList.add('is-hiden');
+        renderMoviesList(queue);
         console.log(queue);
       });
     })

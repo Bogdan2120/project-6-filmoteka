@@ -1,7 +1,7 @@
-import('./js/teamModal');
+import './js/teamModal';
 
 import './js/firebaseGoogleAuth';
 
-import('./js/rendermarkup');
+import './js/rendermarkup';
 
 import './js/scroll';

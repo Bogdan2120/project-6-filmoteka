@@ -5,6 +5,7 @@ export const refs = {
   btnWatched: document.querySelector('[name="watched"]'),
   btnQueue: document.querySelector('[name="queue"]'),
   defaultText: document.querySelector('[name="default-text"]'),
+  myLibraryGallery: document.querySelector('.my-library-film-card'),
 };
 
 // Render wathed films after loading page
