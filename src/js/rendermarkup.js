@@ -12,7 +12,7 @@ const clearMarkup = () => {
 };
 
 // Render
-const renderMoviesListTemplate = moviesArray => {
+export const renderMoviesListTemplate = moviesArray => {
   const markupMoviesList = moviesArray
     .map(({ genre_ids, poster_path, release_date, title, vote_average }) => {
       let genre = genre_ids.join(', ');
