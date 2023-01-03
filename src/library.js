@@ -2,6 +2,6 @@ import './js/scroll';
 
 import './js/my-library';
 
-import './js/getDataFromFirestore';
+import './js/get-data-from-localstorage';
 
-import './js/render';
+import './js/render-cards';

@@ -1,4 +1,4 @@
-import { loadWatchedFilms, loadQueueFilms } from './getDataFromFirestore';
+import { loadWatchedFilms, loadQueueFilms } from './get-data-from-localstorage';
 
 // Refs
 export const refs = {
