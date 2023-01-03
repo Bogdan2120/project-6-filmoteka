@@ -1,0 +1,22 @@
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.default {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.default__title {
+  color: #ff001b;
+  margin-bottom: 10px;
+  line-height: 1.17;
+}
+
+.default__text {
+  text-decoration: solid;
+  font-size: 20px;
+  line-height: 1.17;
+}

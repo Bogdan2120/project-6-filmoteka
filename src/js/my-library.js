@@ -1,37 +1,41 @@
+console.log('hello');
 import { renderMoviesListTemplate } from './rendermarkup';
-
+// Refs
 const refs = {
   btnWatched: document.querySelector('[name="watched"]'),
   btnQueue: document.querySelector('[name="queue"]'),
+  defaultText: document.querySelector('[name="default-text"]'),
 };
-// get firebase data
+// Get firebase data
 const firebaseWathedFilms = firebase.database().refs('watched');
 const firebaseQueueFilms = firebase.database().refs('queue');
-// cheking data
+// Cheking data
 const loadWatchedFilms = () => {
-  if (!firebaseWathedFilms) {
-    console.log('Empty');
+  if ((firebaseWathedFilms = [''] || firebaseWathedFilms.lenght === 0)) {
     return;
   }
+  defaultText.classList.add('is-hiden');
+  
   firebaseWathedFilms.on('value', datas => {
-    datas.array.forEach(el => {
+    datas.forEach(el => {
       renderMoviesListTemplate(el);
     });
   });
 };
 
 const loadQueueFilms = () => {
-  if (!firebaseQueueFilms) {
-    console.log('Empty');
+  if ((firebaseQueueFilms = [''] || firebaseQueueFilms.lenght === 0)) {
     return;
   }
+  defaultText.classList.add('is-hiden');
+
   firebaseQueueFilms.on('value', datas => {
-    datas.array.forEach(el => {
+    datas.forEach(el => {
       renderMoviesListTemplate(el);
     });
   });
 };
-// render wathed films after loading page
+// Render wathed films after loading page
 loadWatchedFilms();
 // Event listener
 refs.btnWatched.addEventListener('click', loadWatchedFilms);
