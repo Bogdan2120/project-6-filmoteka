@@ -26,10 +26,8 @@ function createUnit(data) {
   return data
     .map(({ name, howDo, title, previewImg, largeImg }) => {
       return `<li class="unit">
-    <a href="${largeImg}">
         <img src="${previewImg}" alt="${name}" title="${title}" class="unit-img" />
-    </a>
-    <div>
+    <div class="unit-thumb">
     <p class="unit-info"> ${name}</p>
     <p class="unit-info">Make: ${howDo}</p>
     </div>
