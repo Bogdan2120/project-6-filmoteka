@@ -1,41 +1,23 @@
-import { refs } from './my-library';
-import { renderMoviesList } from './render-cards';
-
 // get database from localstorage and render
 
-export function loadWatchedFilms() {
+export function getWatchedFilms() {
   try {
-    let watched = [];
-    const watchedItems = localStorage.getItem('watched');
-    const parsedWatchedItems = JSON.parse(localStorage.getItem('watched'));
-    watched.push(parsedWatchedItems);
-
-    if (watched.lenght === 1) {
-      return;
-    } else {
-      refs.defaultText.classList.add('is-hiden');
-      console.log(watched);
-      return renderMoviesList(watched);
-    }
+    return JSON.parse(localStorage.getItem('watched'));
   } catch (err) {
+    Notiflix.Notify.failure(err.message);
+
     console.log(err.message);
+    return [];
   }
 }
 
-export function loadQueueFilms() {
+export function getQueueFilms() {
   try {
-    let queue = [];
-    const parseQueuedItems = JSON.parse(localStorage.getItem('queue'));
-    queue.push(parseQueuedItems);
-
-    if (queue.lenght === 1) {
-      return;
-    } else {
-      refs.defaultText.classList.add('is-hiden');
-      console.log(queue);
-      return renderMoviesList(queue);
-    }
+    return JSON.parse(localStorage.getItem('queue'));
   } catch (err) {
+    Notiflix.Notify.failure(err.message);
+
     console.log(err.message);
+    return [];
   }
 }
