@@ -23,7 +23,9 @@ export default class NewApiFetches {
         total_pages: response.data.total_pages,
         total_results: response.data.total_results,
         id: el.id,
-        poster_path: `https://www.themoviedb.org/t/p/w300_and_h450_bestv2${el.poster_path}`,
+        poster_path: el.poster_path
+          ? `https://www.themoviedb.org/t/p/w500${el.poster_path}`
+          : 'https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-',
         title: el.title,
         release_date: el.release_date.slice(0, 4),
         vote_average: el.vote_average,
@@ -35,10 +37,13 @@ export default class NewApiFetches {
     return requestArray;
   }
 
-  async fetchPopularMovie() {
+  async fetchPopularMovie(newPage) {
     const requestArray = [];
+    this.page = newPage;
     const genresList = await this.fetchGenresMovie();
-    const response = await axios.get(`${URL}/movie/popular?api_key=${KEY}`);
+    const response = await axios.get(
+      `${URL}/movie/popular?api_key=${KEY}&page=${this.page}`
+    );
     if (response.status !== 200) {
       throw new Error(response.status);
     }
@@ -47,7 +52,9 @@ export default class NewApiFetches {
         total_pages: response.data.total_pages,
         total_results: response.data.total_results,
         id: el.id,
-        poster_path: `https://www.themoviedb.org/t/p/w300_and_h450_bestv2${el.poster_path}`,
+        poster_path: el.poster_path
+          ? `https://www.themoviedb.org/t/p/w500${el.poster_path}`
+          : 'https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-',
         title: el.title,
         release_date: el.release_date.slice(0, 4),
         vote_average: el.vote_average,
@@ -77,7 +84,9 @@ export default class NewApiFetches {
         total_pages: response.data.total_pages,
         total_results: response.data.total_results,
         id: el.id,
-        poster_path: `https://www.themoviedb.org/t/p/w300_and_h450_bestv2${el.poster_path}`,
+        poster_path: el.poster_path
+          ? `https://www.themoviedb.org/t/p/w500${el.poster_path}`
+          : 'https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-',
         title: el.title,
         release_date: el.release_date ? el.release_date.slice(0, 4) : 'n/a',
         vote_average: el.vote_average ? el.vote_average : 'n/a',
@@ -100,7 +109,9 @@ export default class NewApiFetches {
     if (response.status !== 200) {
       throw new Error(response.status);
     }
-    requestDetails.poster_path = `https://www.themoviedb.org/t/p/w300_and_h450_bestv2${response.data.poster_path}`;
+    requestDetails.poster_path = response.data.poster_path
+      ? `https://www.themoviedb.org/t/p/w500${response.data.poster_path}`
+      : 'https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';
     requestDetails.id = response.data.id;
     requestDetails.vote_average = response.data.vote_average;
     requestDetails.vote_count = response.data.vote_count;
