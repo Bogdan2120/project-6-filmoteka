@@ -8,6 +8,7 @@ import './js/apiFetches.js';
 //import './js/test-fetchest.js';
 import './js/scroll';
 
+import './js/modal-window';
 import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
 import 'regenerator-runtime/runtime.js';
 import './js/trailers';

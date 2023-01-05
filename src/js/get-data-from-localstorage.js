@@ -2,7 +2,9 @@
 
 export function getWatchedFilms() {
   try {
-    return JSON.parse(localStorage.getItem('watched'));
+    const temp = localStorage.getItem('watched');
+    console.log(temp);
+    return localStorage.getItem('watched');
   } catch (err) {
     Notiflix.Notify.failure(err.message);
 
