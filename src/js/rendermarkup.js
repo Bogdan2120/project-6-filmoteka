@@ -51,10 +51,19 @@ const renderMoviesListTemplate = moviesArray => {
 
 // -------------- Popular films for BODY ------
 newApiFetches
-  .fetchPopularMovie()
+  .fetchPopularMovie(1)
   .then(data => {
     console.log(data);
     renderMoviesListTemplate(data);
+    totalItems = data[0].total_results;
+    const pagination = new Pagination(refs.pagination, getOptions());
+    // clearMarkup();
+    renderMoviesListTemplate(data);
+
+    pagination.off('beforeMove', loadMorePopularFilms); //add for pagination
+    pagination.on('beforeMove', loadMorePopularFilms); //add for pagination
+    pagination.reset(); //add for pagination
+    refs.pagination.classList.remove('is-hidden'); //add for pagination
   })
   .catch(error => console.log(error));
 
@@ -85,8 +94,8 @@ const handleSubmit = e => {
       clearMarkup();
       renderMoviesListTemplate(data);
 
-      pagination.off('beforeMove', loadMoreFilms); //add for pagination
-      pagination.on('beforeMove', loadMoreFilms); //add for pagination
+      pagination.off('beforeMove', loadMoreSearchFilms); //add for pagination
+      pagination.on('beforeMove', loadMoreSearchFilms); //add for pagination
       pagination.reset(); //add for pagination
       refs.pagination.classList.remove('is-hidden'); //add for pagination
 
@@ -124,7 +133,7 @@ function getOptions() {
   };
 }
 
-function loadMoreFilms(e) {
+function loadMoreSearchFilms(e) {
   const currentPage = e.page;
 
   newApiFetches
@@ -134,4 +143,16 @@ function loadMoreFilms(e) {
     })
     .catch(error => console.log(error));
 }
+
+function loadMorePopularFilms(e) {
+  const currentPage = e.page;
+
+  newApiFetches
+    .fetchPopularMovie(currentPage)
+    .then(data => {
+      renderMoviesListTemplate(data);
+    })
+    .catch(error => console.log(error));
+}
+
 //--------------------------- /pagination option -----------------------------------

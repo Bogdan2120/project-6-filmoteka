@@ -106,10 +106,10 @@ const renfetch = id => {
       };
 
       const storageWatched = () => {
-        addStorageMovie('Watched', data.id);
+        addStorageMovie('watched', data.id);
       };
       const storageQueue = () => {
-        addStorageMovie('Queue', data.id);
+        addStorageMovie('queue', data.id);
       };
       refs.buttonWatched.addEventListener('click', storageWatched);
       refs.buttonQueue.addEventListener('click', storageQueue);
@@ -126,6 +126,7 @@ const addStorageMovie = (key, value) => {
     (course, index, array) => array.indexOf(course) === index
   );
   save(key, uniqueValue);
+  console.log(uniqueValue);
 };
 
 const load = key => {
