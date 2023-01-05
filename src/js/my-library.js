@@ -1,6 +1,9 @@
 import { getWatchedFilms, getQueueFilms } from './get-data-from-localstorage';
-import { renderMoviesList } from './render-cards';
-import Notiflix from 'notiflix';
+// import { renderMoviesList } from './render-cards';
+import axios from 'axios';
+
+const URL = `https://api.themoviedb.org/3`;
+const KEY = `633bd9c8c9bc68a8c4a40449237d5fcd`;
 
 // Refs
 export const refs = {
@@ -10,33 +13,65 @@ export const refs = {
   myLibraryGallery: document.querySelector('.my-library-film-card'),
 };
 
-// render cards
-let watched = [];
-let queue = [];
+const renderMoviesList = moviesArray => {
+  const markupMoviesList = moviesArray
+    .map(({ genre_ids, poster_path, release_date, title, vote_average }) => {
+      let genre = genre_ids.join(', ');
+      if (genre_ids.length > 2) {
+        genre = genre_ids[0] + ', ' + genre_ids[1] + ', ' + 'Other';
+      }
+      return `
+      <li class="film">
+        <a href="#" class="film__link">
+          <div class="film__body-img">
+            <img
+              src="${poster_path}"
+              alt="${title}"
+              class="film__img"
+            />
+          </div>
+
+          <div class="film__informations">
+            <p class="film__name">${title}</p>
+            <p class="film__detalies">${genre} | ${release_date}</p>
+          </div>
+        </a>
+      </li>
+      `;
+    })
+    .join('');
+
+  refs.myLibraryGallery.insertAdjacentHTML('beforeend', markupMoviesList);
+};
+let watched = getWatchedFilms();
 
 const loadWatchedFilms = () => {
-  watched = getWatchedFilms();
-
-  if (watched === null) {
-    console.log(watched);
+  if (watched.length === null) {
     return;
   } else {
-    console.log('click');
+    let arr = watched.map(el =>
+      axios
+        .get(`${URL}/movie/${el}?api_key=${KEY}`)
+        .then(({ data }) => {
+          return data;
+        })
+        .catch(() => [])
+    );
+    console.log(arr);
     refs.defaultText.classList.add('is-hidden');
-    console.log(watched);
-    // return renderMoviesList(watched);
   }
 };
 
 const loadQueueFilms = () => {
-  queue = getQueueFilms();
+  const queue = getQueueFilms();
+  console.log(queue);
+
   if (queue === null) {
-    console.log(queue);
     return;
   } else {
-    console.log('click');
+    queue.map(el => axios.get(`${URL}/movie/${el}?api_key=${KEY}`));
+
     refs.defaultText.classList.add('is-hidden');
-    console.log(queue);
     // return renderMoviesList(queue);
   }
 };

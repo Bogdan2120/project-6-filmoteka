@@ -1,4 +1,8 @@
-import { refs } from './my-library';
+import { myLibraryGallery } from './my-library';
+
+export const clearMarkup = () => {
+  refs.gallery.innerHTML = '';
+};
 
 export const renderMoviesList = moviesArray => {
   const markupMoviesList = moviesArray
