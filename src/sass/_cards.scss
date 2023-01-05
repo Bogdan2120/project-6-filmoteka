@@ -2,7 +2,8 @@
   display: flex;
 }
 
-.film-cards {
+.film-cards,
+.my-library-film-card {
   display: flex;
   flex-direction: column;
   row-gap: 20px;
@@ -35,18 +36,18 @@
 }
 
 .film__body-img {
-  max-height: 402x;
+  min-height: 402x;
   margin-bottom: 10px;
   border-radius: 5px;
   overflow: hidden;
 
   @media screen and (min-width: 768px) {
-    max-height: 455px;
+    min-height: 504px;
     width: 100%;
   }
 
   @media screen and (min-width: 1280px) {
-    height: auto;
+    min-height: 592px;
     width: 100%;
   }
 

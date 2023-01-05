@@ -1,0 +1,13 @@
+$ npm install
+$npm run start `
+
+icon-close 
+icon-play-ytube
+
+npm install @glidejs/glide
+npm install basiclightbox
+npm i buffer@5.5.0
+npm install babel-plugin-handlebars-inline-precompile
+npm i parcel
+npm install --save-dev hbsfy
+$ npm i @parcel/transformer-sass

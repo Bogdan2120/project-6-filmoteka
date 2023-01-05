@@ -15,21 +15,21 @@
         <li class="menu__item">
           <a class="menu__link" href="./my_library.html">My library</a>
         </li>
-         <li class="menu__item sign-in">
+        <li class="menu__item sign-in">
           <button id="signin" class="navigation__button menu__link" data-translatable>
             Sign in
           </button>
           <button id="signout" class="navigation__button menu__link signOut" data-translatable>
-            Sign out 
+            Sign out
           </button>
-          <div id="googleUser"></div>
+          <div id="googleUser" class="google-user"></div>
         </li>
       </ul>
     </div>
 
     <div class="search-container">
       <form class="search-form">
-        <input type="text" placeholder="Movie search" class="search__input" />
+        <input type="text" name="query" placeholder="Movie search" class="search__input" />
         <button type="submit" class="search__btn">
           <svg class="serch_icon" width="12" height="12">
             <use href="./images/icons.svg#icon-search"></use>

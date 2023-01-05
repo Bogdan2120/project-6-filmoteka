@@ -75,6 +75,7 @@
 .menu {
   display: flex;
   column-gap: 15px;
+  align-items: center;
 
   @media screen and (min-width: 768px) {
     column-gap: 40px;
@@ -95,6 +96,8 @@
     &:hover,
     &:focus {
       color: #ff001b;
+
+      transition: color 300ms;
     }
   }
 
@@ -131,6 +134,24 @@
     border: 0;
     border-bottom: 1px solid #ffffff;
     background: rgba(0, 0, 0, 0);
+    color: #ffffff;
+
+    &::placeholder {
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: calc(16 / 12);
+      letter-spacing: 0em;
+
+      color: #ffffff;
+    }
+
+    &:focus {
+      border: 0;
+      border-bottom: 1px solid #ff6b02;
+
+      transition: color 300ms;
+    }
 
     @media screen and (min-width: 768px) {
       width: 336px;
@@ -144,7 +165,7 @@
   .search__btn {
     position: absolute;
     right: 0;
-    bottom: 6px;
+    bottom: 0;
 
     border: 0;
 
@@ -154,67 +175,112 @@
       fill: #ffffff;
     }
   }
+}
 
-  .search__input::placeholder {
-    font-family: Roboto;
-    font-size: 14px;
-    font-weight: 400;
+// .navigation__button.current {
+//   position: relative;
+// }
+// .navigation__button.current::after {
+//   position: absolute;
+//   top: 13px;
+//   display: block;
+//   content: '';
+//   height: 3px;
+//   width: 100%;
+//   margin-bottom: 20px;
+// }
+// .navigation__button {
+//   font-family: Roboto;
+//   font-style: normal;
+//   font-weight: 500;
+//   font-size: 12px;
+//   line-height: 14px;
+//   text-transform: uppercase;
+//   color: #ffffff;
+//   background-color: inherit;
+//   &:hover {
+//     transition: color 300ms;
+//   }
+// }
+// #googleUser {
+//   @media screen and (max-width: 767px) {
+//     margin-left: 0px;
+//   }
+//   @media screen and (min-width: 768px) {
+//     margin-left: 10px;
+//   }
+// }
+
+// .navigation__item.sign-in {
+//   @media screen and (max-width: 767px) {
+//     display: flex;
+//     flex-direction: column-reverse;
+//   }
+//   @media screen and (min-width: 768px) {
+//     display: flex;
+//     flex-direction: unset;
+//   }
+// }
+
+.menu__item.sign-in {
+  display: flex;
+  row-gap: 5px;
+
+  .navigation__button.signOut {
+    display: none;
+  }
+
+  .navigation__button.signIn {
+    display: block;
+  }
+
+  .navigation__button {
+    width: 60px;
+    height: 25px;
+
+    background: rgba(0, 0, 0, 0);
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
     line-height: calc(16 / 12);
-    letter-spacing: 0em;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
 
     color: #ffffff;
-  }
-}
+    &:hover,
+    &:focus {
+      border: 1px solid #ff6b01;
+      transition: border 300ms;
 
-.navigation__button.current {
-  position: relative;
-}
-.navigation__button.current::after {
-  position: absolute;
-  top: 13px;
-  display: block;
-  content: '';
-  height: 3px;
-  width: 100%;
-  margin-bottom: 20px;
-}
-.navigation__button {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
-  text-transform: uppercase;
-  color: #ffffff;
-  background-color: inherit;
-  &:hover {
-    transition: color 300ms;
+      color: #ff6b01;
+      transition: color 300ms;
+    }
+
+    @media screen and (min-width: 768px) {
+      width: 100px;
+      height: 45px;
+    }
   }
-}
-#googleUser {
-  @media screen and (max-width: 767px) {
-    margin-left: 0px;
+
+  .btn-header__active {
+    background: #ff6b01;
+    border: 0;
   }
-  @media screen and (min-width: 768px) {
+
+  .google-user {
+    display: block;
+    width: 25px;
+    border-radius: 50%;
+    overflow: hidden;
     margin-left: 10px;
-  }
-}
 
-.navigation__button.signOut {
-  display: none;
-}
-
-.navigation__button.signIn {
-  display: block;
-}
-
-.navigation__item.sign-in {
-  @media screen and (max-width: 767px) {
-    display: flex;
-    flex-direction: column-reverse;
-  }
-  @media screen and (min-width: 768px) {
-    display: flex;
-    flex-direction: unset;
+    @media screen and (min-width: 768px) {
+      width: 45px;
+    }
   }
 }
