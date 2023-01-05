@@ -74,6 +74,7 @@ button {
 }
 
 .modal-card-film-close-btn-icon {
+  z-index: 999;
   fill: #000000;
   transition: var(--transition-dur-and-func);
 
@@ -149,7 +150,6 @@ button {
   flex-direction: column;
   gap: 8px;
   padding-right: 45px;
-  padding-left: 20px;
 }
 .list-modal-items__params {
   display: flex;
@@ -173,7 +173,7 @@ button {
 
   color: var(--primari-text-color);
 }
-.description__params {
+.discription__params {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -216,8 +216,7 @@ button {
   }
 }
 
-.modal-queue-btn,
-.modal-watched-btn {
+.modal-submint-btn {
   margin-top: 20px;
   margin-bottom: 40px;
   width: 110px;
