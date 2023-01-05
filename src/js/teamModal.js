@@ -1,61 +1,56 @@
 import { teamItem } from './super-team';
-import simpleLightbox from 'simplelightbox';
+import * as basicLightbox from 'basiclightbox';
 
-(() => {
-  const refs = {
-    openModalBtn: document.querySelector('[data-modal-open]'),
-    closeModalBtn: document.querySelector('[data-modal-close]'),
-    modal: document.querySelector('[data-modal]'),
-  };
+// (() => {
+//   const refs = {
+//     openModalBtn: document.querySelector('[data-modal-open]'),
+//     closeModalBtn: document.querySelector('[data-modal-close]'),
+//     modal: document.querySelector('[data-modal]'),
+//   };
 
-  refs.openModalBtn.addEventListener('click', toggleModal);
-  refs.closeModalBtn.addEventListener('click', toggleModal);
+//   refs.openModalBtn.addEventListener('click', toggleModal);
+//   refs.closeModalBtn.addEventListener('click', toggleModal);
 
-  function toggleModal() {
-    refs.modal.classList.toggle('is-hidden');
-  }
-})();
+//   function toggleModal() {
+//     refs.modal.classList.toggle('is-hidden');
+//   }
+// })();
 
 const refs = {
-  galleryEl: document.querySelector('.super-team'),
+  openModalBtn: document.querySelector('.footer-students-btn'),
 };
-
-// console.log(refs.galleryEl);
 
 function createUnit(data) {
   return data
-    .map(({ name, howDo, title, previewImg, largeImg }) => {
-      return `<li class="unit">
-        <img src="${previewImg}" alt="${name}" title="${title}" class="unit-img" />
-    <div class="unit-thumb">
-    <p class="unit-info"> ${name}</p>
-    <p class="unit-info">Make: ${howDo}</p>
-    </div>
-</li>`;
+    .map(({ name, title, previewImg, svg, position, gitHub }) => {
+      return `<div class="unit">
+      <div class="wraper-img">
+      <img src="${previewImg}" alt="${name}" title="${title}" class="unit-img" />
+      <a href="${gitHub}"><img src="${svg}" alt="${name}" title="${title}" class="unit-svg" />
+      </a>
+      </div>
+    <p class="unit-info name"> ${name}</p>
+    <p class="unit-info role"> ${position}</p>
+</div>`;
     })
     .join('');
 }
 
-function blockStandartAction(evt) {
-  evt.preventDefault();
+refs.openModalBtn.addEventListener('click', openModal);
+const markup = createUnit(teamItem);
+const modal = basicLightbox.create(`<div class="modal"> 
+${markup}
+</div>`);
 
-  if (evt.target.nodeName !== 'IMG') {
-    console.log('this not IMG');
-    return;
+function openModal(e) {
+  modal.show();
+
+  window.addEventListener('keydown', closeModalHandler);
+
+  function closeModalHandler(e) {
+    if (e.code === 'Escape') {
+      modal.close();
+      window.removeEventListener('keydown', closeModalHandler);
+    }
   }
 }
-
-function onShowPicture(evt) {
-  blockStandartAction(evt);
-  // open
-  var lightbox = new SimpleLightbox('.super-team a', {});
-}
-
-// show event
-const galleryEl = document.querySelector('.super-team');
-
-galleryEl.addEventListener('click', onShowPicture);
-
-// markup
-const imgMarkup = createUnit(teamItem);
-galleryEl.insertAdjacentHTML('beforeend', imgMarkup);

@@ -21,6 +21,7 @@
     "@glidejs/glide": "^3.6.0",
     "axios": "^1.2.1",
     "babel-plugin-handlebars-inline-precompile": "^2.1.1",
+
     "basiclightbox": "^5.0.4",
     "firebase": "^9.15.0",
     "modern-normalize": "^1.1.0",

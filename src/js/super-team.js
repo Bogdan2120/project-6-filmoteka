@@ -1,48 +1,49 @@
-import oleHxOleksuk from '../images/team-photo/Oleh-Oleksuk.jpg';
-import olehKosminin from '../images/team-photo/Oleh_Kosminin.jpg';
-import alexBondarchuck from '../images/team-photo/Oleksandr_Bondarchyck.jpg';
-import serheiToronchenko from '../images/team-photo/Serhei_Torochencko.png';
-import vadimRafalsciy from '../images/team-photo/Vadim-Rafalsciy.jpg';
+import oleHxOleksukR from '../images/team-photo/oleHxOleksukR.jpg';
+import olehKosmininR from '../images/team-photo/olehKosmininR.jpg';
+import alexBondarchuckR from '../images/team-photo/alexBondarchuckR.jpg';
+import serheiToronchenkoR from '../images/team-photo/serheiToronchenkoR.jpg';
+import vadimRafalsciyR from '../images/team-photo/vadimRafalsciyR.jpg';
+import gitHubSvg from '../images/team-photo/GitHubIcon.png';
 
 export const teamItem = [
   {
-    name: 'Олег Олексюк',
+    name: 'Oleh ',
     howDo: 'Слайдер, авторизація, трейлер',
-    position: 'developer',
+    position: 'Developer',
     gitHub: 'https://github.com/oleHxOleksuk',
-    previewImg: oleHxOleksuk,
-    largeImg: '№',
+    previewImg: oleHxOleksukR,
+    svg: gitHubSvg,
   },
   {
-    name: 'Олександр Бондарчук',
+    name: 'Alex',
     howDo: 'Блок "Вам може сподобатись" в library',
-    position: 'developer',
+    position: 'Developer',
     gitHub: 'https://github.com/LexBondarchyk',
-    previewImg: alexBondarchuck,
-    largeImg: '№',
+    previewImg: alexBondarchuckR,
+    svg: gitHubSvg,
   },
   {
-    name: 'Serhei Toronchenko',
+    name: 'Serhei ',
     howDo: 'API Class (axios/fetch)',
-    position: 'developer',
+    position: 'Developer',
     gitHub: 'https://github.com/ertyhd',
-    previewImg: serheiToronchenko,
-    largeImg: '№',
+    previewImg: serheiToronchenkoR,
+    svg: gitHubSvg,
   },
   {
-    name: 'Вадим  Рафальський',
+    name: 'Vadim',
     howDo: 'Modal window (LocalStorage)',
-    position: 'developer',
+    position: 'Developer',
     gitHub: 'https://github.com/Vadim-Rafalskiy',
-    previewImg: vadimRafalsciy,
-    largeImg: '№',
+    previewImg: vadimRafalsciyR,
+    svg: gitHubSvg,
   },
   {
-    name: 'Олег Космінін',
+    name: 'Oleh',
     howDo: 'Make: Footer,modal with team',
-    position: 'developer',
+    position: 'Developer',
     gitHub: 'https://https://github.com/OlehKosminin',
-    previewImg: olehKosminin,
-    largeImg: '№',
+    previewImg: olehKosmininR,
+    svg: gitHubSvg,
   },
 ];
