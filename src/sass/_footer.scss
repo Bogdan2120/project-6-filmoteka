@@ -1,6 +1,6 @@
-::-webkit-scrollbar {
-  display: none;
-}
+// ::-webkit-scrollbar {
+//   display: none;
+// }
 
 .section {
   margin: 0 auto;
@@ -115,23 +115,6 @@
 
   z-index: 20;
 }
-
-.modal-close_btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-
-  display: flex;
-  justify-content: center;
-
-  padding: 3px;
-
-  background-color: transparent;
-  border: none;
-  border-radius: 50%;
-  border: 1px solid #000;
-}
-
 .hidden {
   position: absolute;
   width: 1px;
@@ -193,6 +176,10 @@
 
   display: flex;
   flex-wrap: wrap;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @media screen and (min-width: 768px) {
     padding: 30px;
