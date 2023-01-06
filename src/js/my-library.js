@@ -2,8 +2,6 @@ import { getWatchedFilms, getQueueFilms } from './get-data-from-localstorage';
 import { renderMoviesList, clearMarkup } from './render-cards';
 import NewApiFetches from './apiFetches';
 
-const URL = `https://api.themoviedb.org/3`;
-const KEY = `633bd9c8c9bc68a8c4a40449237d5fcd`;
 const newApiFetches = new NewApiFetches();
 
 // Refs
@@ -37,8 +35,6 @@ const loadWatchedFilms = () => {
 };
 
 const loadQueueFilms = () => {
-  console.log(queue);
-
   if (queue === null) {
     return;
   } else {
@@ -48,7 +44,6 @@ const loadQueueFilms = () => {
       newApiFetches
         .fetchMovieById(id)
         .then(data => {
-          console.log(data);
           renderMoviesList(data);
         })
         .catch(err => new Error(err))
