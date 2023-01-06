@@ -137,4 +137,33 @@ export default class NewApiFetches {
     }
     return response.data;
   }
+
+  async fetchMovieById(id) {
+    const requestArray = [];
+    let item = [];
+    this.value = id;
+    // const genresList = await this.fetchGenresMovie();
+    const response = await axios.get(
+      `${URL}/movie/${id}?api_key=${KEY}&language=en-US&include_adult=false`
+    );
+    if (response.status !== 200) {
+      throw new Error(response.status);
+    }
+    console.log('RESP ', response.data);
+    item.push(response.data);
+    item.map(el => {
+      requestArray.push({
+        id: el.id,
+        poster_path: el.poster_path
+          ? `https://www.themoviedb.org/t/p/w500${el.poster_path}`
+          : 'https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-',
+        title: el.title,
+        release_date: el.release_date ? el.release_date.slice(0, 4) : 'n/a',
+        vote_average: el.vote_average ? el.vote_average : 'n/a',
+        genre_ids: el.genres.map(({ name }) => name),
+      });
+    });
+    console.log(requestArray);
+    return requestArray;
+  }
 }
