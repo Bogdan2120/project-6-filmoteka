@@ -12,7 +12,7 @@ export const renderMoviesList = moviesArray => {
         genre = genre_ids[0] + ', ' + genre_ids[1] + ', ' + 'Other';
       }
       return `
-      <li class="film">
+      <li class="film my-library-film">
         <a href="#" class="film__link">
           <div class="film__body-img">
             <img
