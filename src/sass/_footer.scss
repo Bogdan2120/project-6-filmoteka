@@ -1,6 +1,6 @@
-::-webkit-scrollbar {
-  display: none;
-}
+// ::-webkit-scrollbar {
+//   display: none;
+// }
 
 .section {
   margin: 0 auto;
@@ -22,13 +22,14 @@
   background-color: #f7f7f7;
 
   margin: 0;
-  padding: 0;
+  padding: 30px 0;
 
   // position: relative;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.1875;
+    padding: 0;
   }
 }
 
@@ -115,23 +116,6 @@
 
   z-index: 20;
 }
-
-.modal-close_btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-
-  display: flex;
-  justify-content: center;
-
-  padding: 3px;
-
-  background-color: transparent;
-  border: none;
-  border-radius: 50%;
-  border: 1px solid #000;
-}
-
 .hidden {
   position: absolute;
   width: 1px;
@@ -193,6 +177,10 @@
 
   display: flex;
   flex-wrap: wrap;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @media screen and (min-width: 768px) {
     padding: 30px;

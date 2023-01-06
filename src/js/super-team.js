@@ -6,6 +6,7 @@ import vadimRafalsciyR from '../images/team-photo/vadimRafalsciyR.jpg';
 import bohdanR from '../images/team-photo/bohdanR.jpg';
 import Vlad from '../images/team-photo/vlad.png';
 import Nazar from '../images/team-photo/Nazar.jpg';
+import Andriy from '../images/team-photo/andriyR.jpg';
 import gitHubSvg from '../images/team-photo/GitHubIcon.png';
 
 export const teamItem = [
@@ -64,6 +65,13 @@ export const teamItem = [
     position: 'Developer',
     gitHub: 'https://github.com/DydikN',
     previewImg: Nazar,
+    svg: gitHubSvg,
+  },
+  {
+    name: 'Andriy',
+    position: 'Developer',
+    gitHub: 'https://github.com/AnBoyvan',
+    previewImg: Andriy,
     svg: gitHubSvg,
   },
 ];
