@@ -1,9 +1,8 @@
-import {
-  getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
-  signOut,
-} from 'firebase/auth';
+import {getAuth,signInWithPopup,GoogleAuthProvider,signOut,} from 'firebase/auth';
+import { initializeApp } from "firebase/app";
+import { getDatabase, set, ref, onValue, update, remove } from "firebase/database";
+import Notiflix from 'notiflix';
+import { chooseThemeForNotiflix } from './notiflix';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBAxD1d6Q1iAwziX2Na8ubQZJCLhj-Pvhg',
@@ -16,6 +15,21 @@ const firebaseConfig = {
   appId: '1:815844014735:web:4184be206f1dcdb43b4efa',
 };
 firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+export const auth = getAuth();
+let user;
+const headerMyLibrary = document.querySelector('#header-myLibrary')
+headerMyLibrary.addEventListener('click', checkLogInForMyLibrary);
+function checkLogInForMyLibrary() {
+  chooseThemeForNotiflix();
+  if (auth.currentUser === null) {
+      headerMyLibrary.removeAttribute('href');
+      Notiflix.Report.info('Oops', 'Please Log In first ', 'Okay');
+  } else {
+      headerMyLibrary.setAttribute('href', './library.html');
+  };
+};
 
 const login = document
   .getElementById('signin')
