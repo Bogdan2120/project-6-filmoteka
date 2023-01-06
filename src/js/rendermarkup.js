@@ -18,7 +18,7 @@ const clearMarkup = () => {
 // Render
 const renderMoviesListTemplate = moviesArray => {
   const markupMoviesList = moviesArray
-    .map(({ genre_ids, poster_path, release_date, title, vote_average }) => {
+    .map(({ genre_ids, poster_path, release_date, title, vote_average, id }) => {
       let genre = genre_ids.join(', ');
       if (genre_ids.length > 2) {
         genre = genre_ids[0] + ', ' + genre_ids[1] + ', ' + 'Other';
@@ -30,7 +30,7 @@ const renderMoviesListTemplate = moviesArray => {
             <img
               src="${poster_path}"
               alt="${title}"
-              class="film__img"
+              class="film__img" data-action='${id}'
             />
           </div>
 
