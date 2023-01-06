@@ -252,6 +252,13 @@
 
   width: 35px;
   height: 35px;
+
+  transition: all 0.5s ease 0s;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
   @media screen and (min-width: 768px) {
     width: 45px;
     height: 45px;

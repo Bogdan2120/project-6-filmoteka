@@ -14,3 +14,4 @@ import 'regenerator-runtime/runtime.js';
 import './js/trailers';
 import './js/spinner';
 import './js/slider';
+import './js/pre-loader';
