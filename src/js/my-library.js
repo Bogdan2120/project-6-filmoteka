@@ -1,6 +1,5 @@
 import { getWatchedFilms, getQueueFilms } from './get-data-from-localstorage';
 import { renderMoviesList, clearMarkup } from './render-cards';
-import axios from 'axios';
 import NewApiFetches from './apiFetches';
 
 const URL = `https://api.themoviedb.org/3`;
@@ -16,8 +15,8 @@ export const refs = {
 };
 
 // render
-
 let watched = getWatchedFilms();
+let queue = getQueueFilms();
 
 const loadWatchedFilms = () => {
   if (watched === null) {
@@ -29,16 +28,13 @@ const loadWatchedFilms = () => {
       newApiFetches
         .fetchMovieById(id)
         .then(data => {
-          console.log(data);
           renderMoviesList(data);
         })
-        .catch(err => console.log(err))
+        .catch(err => new Error(err))
     );
     refs.defaultText.classList.add('is-hidden');
   }
 };
-
-let queue = getQueueFilms();
 
 const loadQueueFilms = () => {
   console.log(queue);
@@ -55,7 +51,7 @@ const loadQueueFilms = () => {
           console.log(data);
           renderMoviesList(data);
         })
-        .catch(err => console.log(err))
+        .catch(err => new Error(err))
     );
     refs.defaultText.classList.add('is-hidden');
   }
