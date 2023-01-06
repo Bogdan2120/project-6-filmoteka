@@ -46,18 +46,15 @@ const renderMoviesList = moviesArray => {
 let watched = getWatchedFilms();
 
 const loadWatchedFilms = () => {
-  if (watched.length === null) {
+  if (watched === null) {
     return;
   } else {
-    let arr = watched.map(el =>
+    let arr = watched.map(id =>
       axios
-        .get(`${URL}/movie/${el}?api_key=${KEY}`)
-        .then(({ data }) => {
-          return data;
-        })
+        .get(`${URL}/movie/${id}?api_key=${KEY}`)
+        .then(resp => renderMoviesList(resp.data))
         .catch(() => [])
     );
-    console.log(arr);
     refs.defaultText.classList.add('is-hidden');
   }
 };
