@@ -1,43 +1,63 @@
 import { getWatchedFilms, getQueueFilms } from './get-data-from-localstorage';
-import { renderMoviesList } from './render-cards';
-import Notiflix from 'notiflix';
+import { renderMoviesList, clearMarkup } from './render-cards';
+import axios from 'axios';
+import NewApiFetches from './apiFetches';
+
+const URL = `https://api.themoviedb.org/3`;
+const KEY = `633bd9c8c9bc68a8c4a40449237d5fcd`;
+const newApiFetches = new NewApiFetches();
 
 // Refs
 export const refs = {
   btnWatched: document.querySelector('[name="watched"]'),
   btnQueue: document.querySelector('[name="queue"]'),
   defaultText: document.querySelector('[name="default-text"]'),
-  myLibraryGallery: document.querySelector('.my-library-film-card'),
+  gallery: document.querySelector('.my-library-film-card'),
 };
 
-// render cards
-let watched = [];
-let queue = [];
+// render
+
+let watched = getWatchedFilms();
 
 const loadWatchedFilms = () => {
-  watched = getWatchedFilms();
-
   if (watched === null) {
-    console.log(watched);
     return;
   } else {
-    console.log('click');
+    clearMarkup();
+
+    watched.map(id =>
+      newApiFetches
+        .fetchMovieById(id)
+        .then(data => {
+          console.log(data);
+          renderMoviesList(data);
+        })
+        .catch(err => console.log(err))
+    );
     refs.defaultText.classList.add('is-hidden');
-    console.log(watched);
-    // return renderMoviesList(watched);
   }
 };
 
+let queue = getQueueFilms();
+
 const loadQueueFilms = () => {
-  queue = getQueueFilms();
+  console.log(queue);
+
   if (queue === null) {
-    console.log(queue);
     return;
   } else {
-    console.log('click');
+    clearMarkup();
+
+    queue.map(id =>
+      newApiFetches
+        .fetchMovieById(id)
+        .then(data => {
+          console.log(data);
+          renderMoviesList(data);
+        })
+        .catch(err => console.log(err))
+    );
     refs.defaultText.classList.add('is-hidden');
-    console.log(queue);
-    // return renderMoviesList(queue);
   }
 };
 

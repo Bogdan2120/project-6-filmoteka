@@ -1,5 +1,9 @@
 import { refs } from './my-library';
 
+export const clearMarkup = () => {
+  refs.gallery.innerHTML = '';
+};
+
 export const renderMoviesList = moviesArray => {
   const markupMoviesList = moviesArray
     .map(({ genre_ids, poster_path, release_date, title, vote_average }) => {
@@ -28,5 +32,5 @@ export const renderMoviesList = moviesArray => {
     })
     .join('');
 
-  refs.myLibraryGallery.insertAdjacentHTML('beforeend', markupMoviesList);
+  refs.gallery.insertAdjacentHTML('beforeend', markupMoviesList);
 };
