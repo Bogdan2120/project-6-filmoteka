@@ -6,6 +6,7 @@
 .my-library-film-card {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   row-gap: 20px;
   padding-left: 20px;
   padding-right: 20px;
@@ -35,19 +36,29 @@
   }
 }
 
+.film.my-library-film {
+  @media screen and (min-width: 768px) {
+    flex-basis: 336px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    flex-basis: 394px;
+  }
+}
+
 .film__body-img {
-  min-height: 402x;
+  min-height: 208px;
   margin-bottom: 10px;
   border-radius: 5px;
   overflow: hidden;
 
   @media screen and (min-width: 768px) {
-    min-height: 504px;
+    min-height: 455px;
     width: 100%;
   }
 
   @media screen and (min-width: 1280px) {
-    min-height: 592px;
+    min-height: 574px;
     width: 100%;
   }
 
