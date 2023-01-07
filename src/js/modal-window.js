@@ -6,6 +6,7 @@ import SVG from '../images/symbol-arial.svg';
 const newApiFetches = new NewApiFetches();
 
 const filmLink = document.querySelector('.film-cards');
+const loading = document.querySelector('.spinner-box');
 
 filmLink.addEventListener('click', selectFilm);
 
@@ -95,6 +96,7 @@ const render = ({
 };
 
 const renfetch = id => {
+  loading.classList.remove('is-hidden');
   newApiFetches
     .fetchDetailsMovie(id)
     .then(data => {
@@ -114,7 +116,10 @@ const renfetch = id => {
       refs.buttonWatched.addEventListener('click', storageWatched);
       refs.buttonQueue.addEventListener('click', storageQueue);
     })
-    .catch(error => console.log(error));
+    .catch(error => console.log(error))
+    .finally(() => {
+      loading.classList.add('is-hidden');
+    });
 };
 
 const addStorageMovie = (key, value) => {
