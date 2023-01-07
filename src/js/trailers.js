@@ -7,7 +7,7 @@ function createTrailerLink(elementRef) {
 
   trailerBtn.forEach(el =>
     el.addEventListener('click', e => {
-      drawModalForTrailler(e.target.dataset.id);
+      drawModalForTrailler(e.currentTarget.dataset.id);
     })
   );
 

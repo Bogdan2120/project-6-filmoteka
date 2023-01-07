@@ -25,7 +25,7 @@
   z-index: 5;
 }
 
-.card__film .overlay-btn-youtube-text {
+.film .overlay-btn-youtube-text {
   position: absolute;
   display: flex;
   align-items: center;
@@ -48,7 +48,7 @@
   transition: all 400ms ease-in;
 }
 
-.card__film:hover .overlay-btn-youtube-text {
+.film:hover .overlay-btn-youtube-text {
   display: flex;
   opacity: 1;
   transform: translateX(-63%);
