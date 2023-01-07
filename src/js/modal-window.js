@@ -32,7 +32,7 @@ const render = ({
           <use href="${SVG}#close-btn"></use>
         </svg>
       </button>
-      <div>
+      <div class="box-img">
         <p >
           <img class="img-card-modal" src="${poster_path}" alt="" ">
         </p>
@@ -40,7 +40,7 @@ const render = ({
       <div>
         <h2 class="name-film">${original_title}</h2>
         <div class="box-film-params">
-          <div>
+          <div class="modal-box-key">
             <ul class="list-modal">
               <li class="list-modal-items">
                 <p class="list-modal-items__params">Vote / Votes
@@ -63,31 +63,32 @@ const render = ({
           <div>
             <ul class="list-modal">
               <li class="list-modal-items">
-                <p class="list-modal-items__params">${vote_average} / ${vote_count}
-                  <span class="list-modal-items__params-value"></span>
+                <p class="list-modal-items__params-value">
+                <span class="list-modal-items__params-value-average">${vote_average}</span> / ${vote_count}
+                  
                 </p>
               </li>
               <li class="list-modal-items">
-                <p class="list-modal-items__params">${popularity}
+                <p class="list-modal-items__params-value">${popularity}
                 </p>
               </li>
               <li class="list-modal-items">
-                <p class="list-modal-items__params">${original_title}
+                <p class="list-modal-items__params-value">${original_title}
                 </p>
               </li>
               <li class="list-modal-items">
-                <p class="list-modal-items__params">${genres}
+                <p class="list-modal-items__params-value">${genres}
                 </p>
               </li>
             </ul>
           </div>
         </div>
-        <p class="dÐµscription__params">About
+        <p class="discription__params">About
           <span class="items__value">${overview}</span>
         </p>
         <div class="box-modal-btn">
-          <button class="modal-watched-btn">add to Watched</button>
-          <button class="modal-queue-btn">add to queue</button>
+          <button class="modal-watched-btn modal-submint-btn">add to Watched</button>
+          <button class="modal-queue-btn modal-submint-btn">add to queue</button>
         </div>
       </div>
     </div>
@@ -100,6 +101,19 @@ const renfetch = id => {
     .then(data => {
       const instance = basicLightbox.create(render(data));
       instance.show();
+
+    const closeBtnCard = instance.element().querySelector('.modal-card-film-close-btn');
+        closeBtnCard.addEventListener('click', instance.close);
+
+
+        window.addEventListener('keydown', handleKeyPress);
+      function handleKeyPress({ code }) {
+        if (code === 'Escape' && instance.visible()) {
+          instance.close();
+        }
+      }
+
+
       const refs = {
         buttonWatched: document.querySelector('.modal-watched-btn'),
         buttonQueue: document.querySelector('.modal-queue-btn'),
