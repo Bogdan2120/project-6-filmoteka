@@ -1,34 +1,69 @@
+import oleHxOleksukR from '../images/team-photo/oleHxOleksukR.jpg';
+import olehKosmininR from '../images/team-photo/olehKosmininR.jpg';
+import alexBondarchuckR from '../images/team-photo/alexBondarchuckR.jpg';
+import serheiToronchenkoR from '../images/team-photo/serheiToronchenkoR.jpg';
+import vadimRafalsciyR from '../images/team-photo/vadimRafalsciyR.jpg';
+import bohdanR from '../images/team-photo/bohdanR.jpg';
+import Vlad from '../images/team-photo/vlad.png';
+import Nazar from '../images/team-photo/Nazar.jpg';
+import gitHubSvg from '../images/team-photo/GitHubIcon.png';
+
 export const teamItem = [
   {
-    name: 'Олег Олексюк',
-    howDo: 'Слайдер, авторизація, трейлер',
-    position: 'developer',
-    gitHub: 'https://github.com/oleHxOleksuk',
-    previewImg: './images/team-photo/Oleh-Oleksuk.jpg',
-    largeImg: '№',
+    name: 'Bohdan',
+    position: 'Team-lead',
+    gitHub: 'https://github.com/Bogdan2120',
+    previewImg: bohdanR,
+    svg: gitHubSvg,
   },
   {
-    name: 'Олександр Бондарчук',
-    howDo: 'Блок "Вам може сподобатись" в library',
-    position: 'developer',
-    gitHub: 'https://github.com/LexBondarchyk',
-    previewImg: './images/team-photo/Oleksandr_Bondarchyck.jpg',
-    largeImg: './images/team-photo/Oleksandr_Bondarchyck.jpg',
-  },
-  {
-    name: 'Serhei Toronchenko',
-    howDo: 'API Class (axios/fetch)',
-    position: 'developer',
+    name: 'Serhei ',
+    position: 'Scram',
     gitHub: 'https://github.com/ertyhd',
-    previewImg: './images/team-photo/Serhei_Torochencko.png',
-    largeImg: './images/team-photo/Serhei_Torochencko.png',
+    previewImg: serheiToronchenkoR,
+    svg: gitHubSvg,
   },
   {
-    name: 'Вадим Шмулинсон',
-    howDo: 'Modal window (LocalStorage)',
-    position: 'developer',
+    name: 'Oleh ',
+    position: 'Developer',
+    gitHub: 'https://github.com/oleHxOleksuk',
+    previewImg: oleHxOleksukR,
+    svg: gitHubSvg,
+  },
+  {
+    name: 'Alex',
+    position: 'Developer',
+    gitHub: 'https://github.com/LexBondarchyk',
+    previewImg: alexBondarchuckR,
+    svg: gitHubSvg,
+  },
+
+  {
+    name: 'Vadim',
+    position: 'Developer',
     gitHub: 'https://github.com/Vadim-Rafalskiy',
-    previewImg: './images/team-photo/Vadim_Shmulinson.jpg',
-    largeImg: './images/team-photo/Vadim_Shmulinson.jpg',
+    previewImg: vadimRafalsciyR,
+    svg: gitHubSvg,
+  },
+  {
+    name: 'Oleh',
+    position: 'Developer',
+    gitHub: 'https://https://github.com/OlehKosminin',
+    previewImg: olehKosmininR,
+    svg: gitHubSvg,
+  },
+  {
+    name: 'Vlad',
+    position: 'Developer',
+    gitHub: 'https://github.com/Vladyanov',
+    previewImg: Vlad,
+    svg: gitHubSvg,
+  },
+  {
+    name: 'Nazar ',
+    position: 'Developer',
+    gitHub: 'https://github.com/DydikN',
+    previewImg: Nazar,
+    svg: gitHubSvg,
   },
 ];
