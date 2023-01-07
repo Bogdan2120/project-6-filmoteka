@@ -34,9 +34,7 @@ const render = ({
         </svg>
       </button>
       <div class="box-img">
-        <p >
           <img class="img-card-modal" src="${poster_path}" alt="" ">
-        </p>
       </div>
       <div>
         <h2 class="name-film">${original_title}</h2>
@@ -104,17 +102,17 @@ const renfetch = id => {
       const instance = basicLightbox.create(render(data));
       instance.show();
 
-    const closeBtnCard = instance.element().querySelector('.modal-card-film-close-btn');
-        closeBtnCard.addEventListener('click', instance.close);
+      const closeBtnCard = instance
+        .element()
+        .querySelector('.modal-card-film-close-btn');
+      closeBtnCard.addEventListener('click', instance.close);
 
-
-        window.addEventListener('keydown', handleKeyPress);
+      window.addEventListener('keydown', handleKeyPress);
       function handleKeyPress({ code }) {
         if (code === 'Escape' && instance.visible()) {
           instance.close();
         }
       }
-
 
       const refs = {
         buttonWatched: document.querySelector('.modal-watched-btn'),
