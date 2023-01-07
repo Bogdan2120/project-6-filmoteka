@@ -142,7 +142,6 @@ export default class NewApiFetches {
     const requestArray = [];
     let item = [];
     this.value = id;
-    // const genresList = await this.fetchGenresMovie();
     const response = await axios.get(
       `${URL}/movie/${id}?api_key=${KEY}&language=en-US&include_adult=false`
     );
