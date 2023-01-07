@@ -149,7 +149,6 @@ export default class NewApiFetches {
     if (response.status !== 200) {
       throw new Error(response.status);
     }
-    console.log('RESP ', response.data);
     item.push(response.data);
     item.map(el => {
       requestArray.push({
@@ -163,7 +162,6 @@ export default class NewApiFetches {
         genre_ids: el.genres.map(({ name }) => name),
       });
     });
-    console.log(requestArray);
     return requestArray;
   }
 }
