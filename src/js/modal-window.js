@@ -34,9 +34,7 @@ const render = ({
         </svg>
       </button>
       <div class="box-img">
-        <p >
           <img class="img-card-modal" src="${poster_path}" alt="" ">
-        </p>
       </div>
       <div>
         <h2 class="name-film">${original_title}</h2>

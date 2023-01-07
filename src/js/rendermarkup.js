@@ -54,7 +54,7 @@ const renderMoviesListTemplate = moviesArray => {
 newApiFetches
   .fetchPopularMovie(1)
   .then(data => {
-    console.log(data);
+    //console.log(data);
     renderMoviesListTemplate(data);
     totalItems = data[0].total_results;
     const pagination = new Pagination(refs.pagination, getOptions());
