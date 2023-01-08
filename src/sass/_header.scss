@@ -260,7 +260,6 @@
       color: #ff6b01;
       transition: color 300ms;
     }
-
     @media screen and (min-width: 768px) {
       width: 100px;
       height: 45px;
@@ -283,4 +282,31 @@
       width: 45px;
     }
   }
+}
+.signOut{
+  width: 60px;
+    height: 25px;
+
+    background: rgba(0, 0, 0, 0);
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: calc(16 / 12);
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #ffffff;
+    &:hover,
+    &:focus {
+      border: 1px solid #ff6b01;
+      transition: border 300ms;
+
+      color: #ff6b01;
+      transition: color 300ms;
+}
 }

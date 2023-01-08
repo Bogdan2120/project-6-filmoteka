@@ -13,19 +13,20 @@
           <a class="menu__link menu__is-active" href="./index.html">Home</a>
         </li>
         <li class="menu__item">
-          <a class="menu__link" href="./my_library.html">My library</a>
+          <a class="menu__link" href="./my_library.html" id="header-myLibrary">My library</a>
         </li>
         <li class="menu__item sign-in">
-          <button id="signin" class="navigation__button menu__link" data-translatable>
-            Sign in
-          </button>
-          <button id="signout" class="navigation__button menu__link signOut" data-translatable>
-            Sign out
-          </button>
-          <div id="googleUser" class="google-user"></div>
+          <div id="LoginScreen">
+            <button id="login" class="navigation__button menu__link" >Login with Google</button>
+          </div>
+          <div id="dashboard">
+            <div id="userDetails"></div>
+            <button id="logout" class="menu__link signOut">Log Out</button>
+          </div>
         </li>
       </ul>
     </div>
+    
 
     <div class="search-container">
       <form class="search-form">
