@@ -90,8 +90,8 @@ const render = ({
           <span class="items__value">${overview}</span>
         </p>
         <div class="box-modal-btn">
-          <button class="modal-watched-btn modal-submint-btn modal-watched-btn-hower">add to Watched</button>
-          <button class="modal-queue-btn modal-submint-btn modal-queue-btn-hower" data-action=add>add to queue</button>
+          <button class="modal-watched-btn modal-submint-btn modal-watched-btn-hower">Add to watched</button>
+          <button class="modal-queue-btn modal-submint-btn modal-queue-btn-hower" data-action=add>Add to queue</button>
 
           </div>
       </div>
@@ -124,6 +124,22 @@ const renfetch = id => {
         buttonQueue: document.querySelector('.modal-queue-btn'),
       };
 
+      let dataW = load('watched');
+      if (dataW === undefined) {
+        dataW = [];
+      }
+      if (dataW.find(el => el.id === data.id) !== undefined) {
+        refs.buttonWatched.textContent = 'Remove from watched';
+      }
+
+      let dataQ = load('queue');
+      if (dataQ === undefined) {
+        dataQ = [];
+      }
+      if (dataQ.find(el => el.id === data.id) !== undefined) {
+        refs.buttonQueue.textContent = 'Remove from queue';
+      }
+
       const storageWatched = () => {
         let dataArr = load('watched');
         if (dataArr === undefined) {
@@ -131,7 +147,7 @@ const renfetch = id => {
         }
         if (dataArr.find(el => el.id === data.id) !== undefined) {
           storageRemWatched();
-          refs.buttonWatched.textContent = 'Added in watched';
+          refs.buttonWatched.textContent = 'Add to watched';
         } else {
           addStorageMovie('watched', data);
           refs.buttonWatched.textContent = 'Remove from watched';
@@ -145,7 +161,7 @@ const renfetch = id => {
         }
         if (dataArr.find(el => el.id === data.id) !== undefined) {
           storageRemQueue();
-          refs.buttonQueue.textContent = 'Added in queue';
+          refs.buttonQueue.textContent = 'Add to queue';
         } else {
           addStorageMovie('queue', data);
           refs.buttonQueue.textContent = 'Remove from queue';
@@ -154,14 +170,14 @@ const renfetch = id => {
 
       const storageRemQueue = () => {
         let dataArr = load('queue');
-        objIndex = dataArr.findIndex(el => el.id === data.id);
+        let objIndex = dataArr.findIndex(el => el.id === data.id);
         dataArr.splice(objIndex, 1);
         localStorage.removeItem('queue');
         save('queue', dataArr);
       };
       const storageRemWatched = () => {
         let dataArr = load('watched');
-        objIndex = dataArr.findIndex(el => el.id === data.id);
+        let objIndex = dataArr.findIndex(el => el.id === data.id);
         dataArr.splice(objIndex, 1);
         localStorage.removeItem('watched');
         save('watched', dataArr);
@@ -171,10 +187,10 @@ const renfetch = id => {
       refs.buttonQueue.addEventListener('click', storageQueue);
 
       if (load('watched').includes(data)) {
-        refs.buttonWatched.textContent = 'Added in watched';
+        refs.buttonWatched.textContent = 'Add to watched';
       }
       if (load('queue').includes(data)) {
-        refs.buttonQueue.textContent = 'Added in queue';
+        refs.buttonQueue.textContent = 'Add to queue';
       }
     })
     .catch(error => console.log(error))
