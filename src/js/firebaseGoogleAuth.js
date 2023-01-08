@@ -37,12 +37,17 @@ function GoogleLogin(){
   console.log('Login Btn Call')
   firebase.auth().signInWithPopup(provider).then(res=>{
     console.log(res.user)
-    document.getElementById('LoginScreen').style.display="none"
-    document.getElementById('dashboard').style.display="block"
+
     showUserDetails(res.user)
   }).catch(e=>{
     console.log(e)
   })
+}
+function showUserDetails(user){
+  document.getElementById('userDetails').innerHTML = `
+    <img src="${user.photoURL}" style="width:30%" class="photo_user">
+    <p class="name">${user.displayName}</p>
+  `
 }
 
 function checkAuthState(){
