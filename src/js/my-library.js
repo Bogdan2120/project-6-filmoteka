@@ -1,43 +1,67 @@
 import { getWatchedFilms, getQueueFilms } from './get-data-from-localstorage';
-import { renderMoviesList } from './render-cards';
-import Notiflix from 'notiflix';
+import { renderMoviesList, clearMarkup } from './render-cards';
+import NewApiFetches from './apiFetches';
+
+const newApiFetches = new NewApiFetches();
 
 // Refs
 export const refs = {
   btnWatched: document.querySelector('[name="watched"]'),
   btnQueue: document.querySelector('[name="queue"]'),
   defaultText: document.querySelector('[name="default-text"]'),
-  myLibraryGallery: document.querySelector('.my-library-film-card'),
+  gallery: document.querySelector('.my-library-film-card'),
+  loading: document.querySelector('.spinner-box'),
 };
 
-// render cards
-let watched = [];
-let queue = [];
+// render
+let watched = getWatchedFilms();
+let queue = getQueueFilms();
 
 const loadWatchedFilms = () => {
-  watched = getWatchedFilms();
+  refs.btnQueue.classList.remove('btn-header__active');
+  refs.btnWatched.classList.add('btn-header__active');
 
   if (watched === null) {
-    console.log(watched);
     return;
   } else {
-    console.log('click');
+    clearMarkup();
+    refs.loading.classList.remove('is-hidden');
+    watched.map(id =>
+      newApiFetches
+        .fetchMovieById(id)
+        .then(data => {
+          renderMoviesList(data);
+        })
+        .catch(err => new Error(err))
+        .finally(() => {
+          refs.loading.classList.add('is-hidden');
+        })
+    );
     refs.defaultText.classList.add('is-hidden');
-    console.log(watched);
-    // return renderMoviesList(watched);
   }
 };
 
 const loadQueueFilms = () => {
-  queue = getQueueFilms();
+  refs.btnQueue.classList.add('btn-header__active');
+  refs.btnWatched.classList.remove('btn-header__active');
   if (queue === null) {
-    console.log(queue);
     return;
   } else {
-    console.log('click');
+    clearMarkup();
+    refs.loading.classList.remove('is-hidden');
+
+    queue.map(id =>
+      newApiFetches
+        .fetchMovieById(id)
+        .then(data => {
+          renderMoviesList(data);
+        })
+        .catch(err => new Error(err))
+        .finally(() => {
+          refs.loading.classList.add('is-hidden');
+        })
+    );
     refs.defaultText.classList.add('is-hidden');
-    console.log(queue);
-    // return renderMoviesList(queue);
   }
 };
 
