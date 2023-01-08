@@ -109,11 +109,13 @@ export default class NewApiFetches {
     if (response.status !== 200) {
       throw new Error(response.status);
     }
+    requestDetails.id = response.data.id;
     requestDetails.release_date = response.data.release_date.slice(0, 4);
+
     requestDetails.poster_path = response.data.poster_path
       ? `https://www.themoviedb.org/t/p/w500${response.data.poster_path}`
       : 'https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';
-    requestDetails.id = response.data.id;
+
     requestDetails.vote_average = response.data.vote_average;
     requestDetails.vote_count = response.data.vote_count;
     requestDetails.popularity = response.data.popularity;
