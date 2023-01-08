@@ -1,10 +1,3 @@
-import {
-  getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
-  signOut,
-} from 'firebase/auth';
-
 const firebaseConfig = {
   apiKey: 'AIzaSyBAxD1d6Q1iAwziX2Na8ubQZJCLhj-Pvhg',
   authDomain: 'project-b3c7f.firebaseapp.com',
@@ -15,51 +8,72 @@ const firebaseConfig = {
   messagingSenderId: '815844014735',
   appId: '1:815844014735:web:4184be206f1dcdb43b4efa',
 };
+
 firebase.initializeApp(firebaseConfig);
+const headerMyLibrary = document.querySelector('#header-myLibrary');
 
-const login = document
-  .getElementById('signin')
-  .addEventListener('click', signinUser);
-const logout = document
-  .getElementById('signout')
-  .addEventListener('click', signoutUser);
+headerMyLibrary.addEventListener('click', checkLogInForMyLibrary);
 
-const provider = new GoogleAuthProvider();
-
-function signinUser() {
-  const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-  firebase
-    .auth()
-    .signInWithPopup(googleAuthProvider)
-    .then(function (data) {
-      //console.log(data)
-      document.getElementById('signin').classList.add('signOut');
-      document.getElementById('signout').classList.add('signIn');
-      document.getElementById('googleUser').style.display = 'block';
-      renderGoogleUser(data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+function checkLogInForMyLibrary() {
+  chooseThemeForNotiflix();
+  if (auth.currentUser === null) {
+    headerMyLibrary.removeAttribute('href');
+    Notiflix.Report.info('Oops', 'Please Log In first ', 'Okay');
+  } else {
+    headerMyLibrary.setAttribute('href', './my_library.html');
+  }
 }
 
-function signoutUser() {
+document.getElementById('dashboard').style.display = 'none';
+
+document.getElementById('login').addEventListener('click', GoogleLogin);
+document.getElementById('logout').addEventListener('click', LogoutUser);
+
+let provider = new firebase.auth.GoogleAuthProvider();
+
+function GoogleLogin() {
+  console.log('Login Btn Call');
+  firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then(res => {
+      console.log(res.user);
+
+      showUserDetails(res.user);
+    })
+    .catch(e => {
+      console.log(e);
+    });
+}
+function showUserDetails(user) {
+  document.getElementById('userDetails').innerHTML = `
+    <img src="${user.photoURL}" class="photo_user">
+    <p class="name">${user.displayName}</p>
+  `;
+}
+
+function checkAuthState() {
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      document.getElementById('LoginScreen').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'flex';
+      showUserDetails(user);
+    } else {
+    }
+  });
+}
+
+function LogoutUser() {
+  console.log('Logout Btn Call');
   firebase
     .auth()
     .signOut()
     .then(() => {
-      //console.log("Sign - out successful.");
-      document.getElementById('signin').classList.remove('signOut');
-      document.getElementById('signout').classList.remove('signIn');
-      document.getElementById('googleUser').style.display = 'none';
+      document.getElementById('LoginScreen').style.display = 'block';
+      document.getElementById('dashboard').style.display = 'none';
     })
-    .catch(error => {
-      console.log(error);
+    .catch(e => {
+      console.log(e);
     });
 }
-
-function renderGoogleUser(data) {
-  document.getElementById('googleUser').innerHTML = `
-          <img class="user-img" src="${data.user.photoURL}">
-        `;
-}
+checkAuthState();

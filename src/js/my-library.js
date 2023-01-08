@@ -25,18 +25,7 @@ const loadWatchedFilms = () => {
     return;
   } else {
     clearMarkup();
-    refs.loading.classList.remove('is-hidden');
-    watched.map(id =>
-      newApiFetches
-        .fetchMovieById(id)
-        .then(data => {
-          renderMoviesList(data);
-        })
-        .catch(err => new Error(err))
-        .finally(() => {
-          refs.loading.classList.add('is-hidden');
-        })
-    );
+    watched.map(el => renderMoviesList([el]));
     refs.defaultText.classList.add('is-hidden');
   }
 };
@@ -48,19 +37,7 @@ const loadQueueFilms = () => {
     return;
   } else {
     clearMarkup();
-    refs.loading.classList.remove('is-hidden');
-
-    queue.map(id =>
-      newApiFetches
-        .fetchMovieById(id)
-        .then(data => {
-          renderMoviesList(data);
-        })
-        .catch(err => new Error(err))
-        .finally(() => {
-          refs.loading.classList.add('is-hidden');
-        })
-    );
+    watched.map(el => renderMoviesList([el]));
     refs.defaultText.classList.add('is-hidden');
   }
 };

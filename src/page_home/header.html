@@ -13,23 +13,32 @@
           <a class="menu__link menu__is-active" href="./index.html">Home</a>
         </li>
         <li class="menu__item">
-          <a class="menu__link" href="./my_library.html">My library</a>
+          <a class="menu__link" href="./my_library.html" id="header-myLibrary"
+            >My library</a
+          >
         </li>
         <li class="menu__item sign-in">
-          <button id="signin" class="navigation__button menu__link" data-translatable>
-            Sign in
-          </button>
-          <button id="signout" class="navigation__button menu__link signOut" data-translatable>
-            Sign out
-          </button>
-          <div id="googleUser" class="google-user"></div>
+          <div id="LoginScreen" class="login-screen">
+            <button id="login" class="navigation__button menu__link">
+              Login
+            </button>
+          </div>
+          <div id="dashboard" class="detalis">
+            <div id="userDetails"></div>
+            <button id="logout" class="menu__link signOut">Log Out</button>
+          </div>
         </li>
       </ul>
     </div>
 
     <div class="search-container">
       <form class="search-form">
-        <input type="text" name="query" placeholder="Movie search" class="search__input" />
+        <input
+          type="text"
+          name="query"
+          placeholder="Movie search"
+          class="search__input"
+        />
         <button type="submit" class="search__btn">
           <svg class="serch_icon" width="12" height="12">
             <use href="./images/icons.svg#icon-search"></use>
