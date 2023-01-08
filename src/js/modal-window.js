@@ -64,12 +64,12 @@ const render = ({
             <ul class="list-modal">
               <li class="list-modal-items">
                 <p class="list-modal-items__params-value">
-                <span class="list-modal-items__params-value-average">${vote_average}</span> / ${vote_count}
+                <span class="list-modal-items__params-value-average">${vote_average.toFixed(2)}</span> / ${vote_count}
                   
                 </p>
               </li>
               <li class="list-modal-items">
-                <p class="list-modal-items__params-value">${popularity}
+                <p class="list-modal-items__params-value">${popularity.toFixed(1)}
                 </p>
               </li>
               <li class="list-modal-items">
