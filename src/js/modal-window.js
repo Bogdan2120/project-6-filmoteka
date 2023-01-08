@@ -1,16 +1,17 @@
 const basicLightbox = require('basiclightbox');
 import 'basiclightbox/dist/basicLightbox.min.css';
 import NewApiFetches from './apiFetches';
+import Notiflix from 'notiflix';
 // import '../sass/_modal-window.scss';
 import SVG from '../images/symbol-arial.svg';
 const newApiFetches = new NewApiFetches();
 
-const filmLink = document.querySelector('.film-cards');
+const filmModal = document.querySelector('body');
 const loading = document.querySelector('.spinner-box');
 
-filmLink.addEventListener('click', selectFilm);
+filmModal.addEventListener('click', selectFilmSlider);
 
-function selectFilm(event) {
+function selectFilmSlider(event) {
   if (event.target.nodeName !== 'IMG') {
     return;
   }
@@ -193,7 +194,10 @@ const renfetch = id => {
         refs.buttonQueue.textContent = 'Add to queue';
       }
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+      Notiflix.Notify.failure('Sorry! There are no movie information found');
+      // console.log(error);
+    })
     .finally(() => {
       loading.classList.add('is-hidden');
     });
