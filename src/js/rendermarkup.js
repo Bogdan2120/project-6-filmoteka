@@ -88,8 +88,9 @@ const handleSubmit = e => {
           refs.pagination.classList.add('is-hidden');
         }
         //  ----------------------} add for pagination -----------------------
-        Notiflix.Notify.failure('Sorry! There is no movies with this title');
+        Notiflix.Notify.failure('Sorry! There are no movies with this title');
         form.elements.query.value = '';
+        clearMarkup();
         return;
       }
       totalItems = data[0].total_results;
