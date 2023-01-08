@@ -37,7 +37,7 @@ const loadQueueFilms = () => {
     return;
   } else {
     clearMarkup();
-    watched.map(el => renderMoviesList([el]));
+    queue.map(el => renderMoviesList([el]));
     refs.defaultText.classList.add('is-hidden');
   }
 };

@@ -7,7 +7,14 @@ export const clearMarkup = () => {
 export const renderMoviesList = moviesArray => {
   const markupMoviesList = moviesArray
     .map(
-      ({ genres, poster_path, release_date, original_title, vote_average }) => {
+      ({
+        genres,
+        poster_path,
+        release_date,
+        original_title,
+        vote_average,
+        id,
+      }) => {
         let genre = genres.join(', ');
         if (genres.length > 2) {
           genre = genres[0] + ', ' + genres[1] + ', ' + 'Other';
@@ -20,6 +27,7 @@ export const renderMoviesList = moviesArray => {
               src="${poster_path}"
               alt="${original_title}"
               class="film__img"
+              data-action="${id}"
             />
           </div>
 
