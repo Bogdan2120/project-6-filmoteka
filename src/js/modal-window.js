@@ -1,7 +1,7 @@
 const basicLightbox = require('basiclightbox');
 import 'basiclightbox/dist/basicLightbox.min.css';
 import NewApiFetches from './apiFetches';
-// import '../sass/modal.scss';
+// import '../sass/_modal-window.scss';
 import SVG from '../images/symbol-arial.svg';
 const newApiFetches = new NewApiFetches();
 
@@ -120,13 +120,13 @@ const renfetch = id => {
       };
 
       const storageWatched = () => {
-        addStorageMovie('watched', data.id);
+        addStorageMovie('watched', data);
         refs.buttonWatched.disabled = 'true';
         refs.buttonWatched.classList.remove('modal-watched-btn-hower');
         refs.buttonWatched.textContent = 'Added in watched';
       };
       const storageQueue = () => {
-        addStorageMovie('queue', data.id);
+        addStorageMovie('queue', data);
         refs.buttonQueue.disabled = 'true';
         refs.buttonQueue.classList.remove('modal-queue-btn-hower');
         refs.buttonQueue.textContent = 'Added in queue';
@@ -134,12 +134,12 @@ const renfetch = id => {
       refs.buttonWatched.addEventListener('click', storageWatched);
       refs.buttonQueue.addEventListener('click', storageQueue);
 
-      if (load('watched').includes(data.id)) {
+      if (load('watched').includes(data)) {
         refs.buttonWatched.disabled = 'true';
         refs.buttonWatched.classList.remove('modal-watched-btn-hower');
         refs.buttonWatched.textContent = 'Added in watched';
       }
-      if (load('queue').includes(data.id)) {
+      if (load('queue').includes(data)) {
         refs.buttonQueue.disabled = 'true';
         refs.buttonQueue.classList.remove('modal-queue-btn-hower');
         refs.buttonQueue.textContent = 'Added in queue';
@@ -352,3 +352,21 @@ const save = (key, value) => {
 //     console.error('Set state error: ', err);
 //   }
 // };
+
+// removeMovie(key, value) {
+
+//   const dataFromLocalStorage = this.load(key);
+
+//   const valueIndex = dataFromLocalStorage.indexOf(value);
+
+//   if (0 <= valueIndex) {
+//       dataFromLocalStorage.splice(valueIndex, 1);
+
+//       this.save(key, dataFromLocalStorage);
+//   }
+// }
+
+// if (action === 'remove') {
+//   localStorageApi.removeMovie(storageKey, movieId);
+//   changeLibraryCardDisplay('none');
+// }

@@ -195,7 +195,14 @@
     gap: 15px;
   }
 }
-
+.modal-watched-btn-hower,
+.modal-queue-btn-hower {
+  &:hover,
+  &:focus {
+    background: #ff6b01;
+    color: #ffffff;
+  }
+}
 .modal-submint-btn {
   display: flex;
   align-items: center;
@@ -218,12 +225,6 @@
 
   color: var(--primari-text-color);
   background: #ffffff;
-
-  &:hover,
-  &:focus {
-    background: #ff6b01;
-    color: #ffffff;
-  }
 
   @media screen and (min-width: 768px) {
     width: 125px;
