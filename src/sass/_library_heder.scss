@@ -13,12 +13,16 @@
     screen and (min-resolution: 2dppx) and (max-width: 767px) {
     background: url(../images/page_library/bg_header_library_mobile@2.jpg)
       rgba(0, 0, 0, 0.56);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   @media screen and (min-width: 768px) {
     height: 216px;
     background: url(../images/page_library/bg_header_library_tablet.jpg)
       rgba(0, 0, 0, 0.56);
+    background-repeat: no-repeat;
+    background-size: cover;
     padding: 40px 32px 0;
   }
 
@@ -27,12 +31,16 @@
     screen and (min-resolution: 2dppx) and (min-width: 768px) {
     background: url(../images/page_library/bg_header_library_tablet@2.jpg)
       rgba(0, 0, 0, 0.56);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   @media screen and (min-width: 1280px) {
     height: 216px;
     background: url(../images/page_library/bg_header_library_descktop.jpg)
       rgba(0, 0, 0, 0.56);
+    background-repeat: no-repeat;
+    background-size: cover;
     padding: 40px 32px 0;
   }
 
@@ -41,6 +49,8 @@
     screen and (min-resolution: 2dppx) and (min-width: 1280px) {
     background: url(../images/page_library/bg_header_library_descktop@2.jpg)
       rgba(0, 0, 0, 0.56);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }
 

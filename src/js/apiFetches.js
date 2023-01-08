@@ -109,6 +109,7 @@ export default class NewApiFetches {
     if (response.status !== 200) {
       throw new Error(response.status);
     }
+    requestDetails.release_date = response.data.release_date.slice(0, 4);
     requestDetails.poster_path = response.data.poster_path
       ? `https://www.themoviedb.org/t/p/w500${response.data.poster_path}`
       : 'https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';

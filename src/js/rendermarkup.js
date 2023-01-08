@@ -7,6 +7,7 @@ const newApiFetches = new NewApiFetches();
 const refs = {
   gallery: document.querySelector('.film-cards'),
   searchForm: document.querySelector('.search-form'),
+  loading: document.querySelector('.spinner-box'),
   pagination: document.querySelector('.tui-pagination'), //add for pagination
 };
 let searchQuery = ''; //зробив глобальною, бо потрібна в файлі пагінації (add for pagination)
@@ -53,7 +54,7 @@ const renderMoviesListTemplate = moviesArray => {
 newApiFetches
   .fetchPopularMovie(1)
   .then(data => {
-    console.log(data);
+    //console.log(data);
     renderMoviesListTemplate(data);
     totalItems = data[0].total_results;
     const pagination = new Pagination(refs.pagination, getOptions());
@@ -73,6 +74,8 @@ const handleSubmit = e => {
   e.preventDefault();
   const form = e.currentTarget;
 
+  refs.loading.classList.remove('is-hidden');
+
   searchQuery = form.elements.query.value.trim();
 
   newApiFetches
@@ -85,8 +88,9 @@ const handleSubmit = e => {
           refs.pagination.classList.add('is-hidden');
         }
         //  ----------------------} add for pagination -----------------------
-        Notiflix.Notify.failure('Sorry! There is no movies with this title');
+        Notiflix.Notify.failure('Sorry! There are no movies with this title');
         form.elements.query.value = '';
+        clearMarkup();
         return;
       }
       totalItems = data[0].total_results;
@@ -101,7 +105,10 @@ const handleSubmit = e => {
 
       form.elements.query.value = '';
     })
-    .catch(error => console.log(error));
+    .catch(error => console.log(error))
+    .finally(() => {
+      refs.loading.classList.add('is-hidden');
+    });
 };
 refs.searchForm.addEventListener('submit', handleSubmit);
 
@@ -135,24 +142,32 @@ function getOptions() {
 
 function loadMoreSearchFilms(e) {
   const currentPage = e.page;
+  refs.loading.classList.remove('is-hidden');
 
   newApiFetches
     .fetchSearchMovie(searchQuery, currentPage)
     .then(data => {
       renderMoviesListTemplate(data);
     })
-    .catch(error => console.log(error));
+    .catch(error => console.log(error))
+    .finally(() => {
+      refs.loading.classList.add('is-hidden');
+    });
 }
 
 function loadMorePopularFilms(e) {
   const currentPage = e.page;
+  refs.loading.classList.remove('is-hidden');
 
   newApiFetches
     .fetchPopularMovie(currentPage)
     .then(data => {
       renderMoviesListTemplate(data);
     })
-    .catch(error => console.log(error));
+    .catch(error => console.log(error))
+    .finally(() => {
+      refs.loading.classList.add('is-hidden');
+    });
 }
 
 //--------------------------- /pagination option -----------------------------------
