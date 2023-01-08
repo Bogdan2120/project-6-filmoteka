@@ -63,12 +63,16 @@ const render = ({
             <ul class="list-modal">
               <li class="list-modal-items">
                 <p class="list-modal-items__params-value">
-                <span class="list-modal-items__params-value-average">${vote_average.toFixed(2)}</span> / ${vote_count}
+                <span class="list-modal-items__params-value-average">${vote_average.toFixed(
+                  2
+                )}</span> / ${vote_count}
                   
                 </p>
               </li>
               <li class="list-modal-items">
-                <p class="list-modal-items__params-value">${popularity.toFixed(1)}
+                <p class="list-modal-items__params-value">${popularity.toFixed(
+                  1
+                )}
                 </p>
               </li>
               <li class="list-modal-items">
@@ -127,10 +131,11 @@ const renfetch = id => {
         }
         if (dataArr.find(el => el.id === data.id) !== undefined) {
           storageRemWatched();
+          refs.buttonWatched.textContent = 'Added in watched';
         } else {
           addStorageMovie('watched', data);
+          refs.buttonWatched.textContent = 'Remove from watched';
         }
-        refs.buttonWatched.textContent = 'Remove from watched';
       };
 
       const storageQueue = () => {
@@ -140,10 +145,11 @@ const renfetch = id => {
         }
         if (dataArr.find(el => el.id === data.id) !== undefined) {
           storageRemQueue();
+          refs.buttonQueue.textContent = 'Added in queue';
         } else {
           addStorageMovie('queue', data);
+          refs.buttonQueue.textContent = 'Remove from queue';
         }
-        refs.buttonQueue.textContent = 'Remove from queue';
       };
 
       const storageRemQueue = () => {
