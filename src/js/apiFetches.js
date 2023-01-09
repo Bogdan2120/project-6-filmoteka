@@ -109,10 +109,13 @@ export default class NewApiFetches {
     if (response.status !== 200) {
       throw new Error(response.status);
     }
+    requestDetails.id = response.data.id;
+    requestDetails.release_date = response.data.release_date.slice(0, 4);
+
     requestDetails.poster_path = response.data.poster_path
       ? `https://www.themoviedb.org/t/p/w500${response.data.poster_path}`
       : 'https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';
-    requestDetails.id = response.data.id;
+
     requestDetails.vote_average = response.data.vote_average;
     requestDetails.vote_count = response.data.vote_count;
     requestDetails.popularity = response.data.popularity;
@@ -136,31 +139,5 @@ export default class NewApiFetches {
       throw new Error(response.status);
     }
     return response.data;
-  }
-
-  async fetchMovieById(id) {
-    const requestArray = [];
-    let item = [];
-    this.value = id;
-    const response = await axios.get(
-      `${URL}/movie/${id}?api_key=${KEY}&language=en-US&include_adult=false`
-    );
-    if (response.status !== 200) {
-      throw new Error(response.status);
-    }
-    item.push(response.data);
-    item.map(el => {
-      requestArray.push({
-        id: el.id,
-        poster_path: el.poster_path
-          ? `https://www.themoviedb.org/t/p/w500${el.poster_path}`
-          : 'https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-',
-        title: el.title,
-        release_date: el.release_date ? el.release_date.slice(0, 4) : 'n/a',
-        vote_average: el.vote_average ? el.vote_average : 'n/a',
-        genre_ids: el.genres.map(({ name }) => name),
-      });
-    });
-    return requestArray;
   }
 }

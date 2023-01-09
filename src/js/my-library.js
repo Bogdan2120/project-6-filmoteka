@@ -1,8 +1,5 @@
 import { getWatchedFilms, getQueueFilms } from './get-data-from-localstorage';
 import { renderMoviesList, clearMarkup } from './render-cards';
-import NewApiFetches from './apiFetches';
-
-const newApiFetches = new NewApiFetches();
 
 // Refs
 export const refs = {
@@ -10,7 +7,6 @@ export const refs = {
   btnQueue: document.querySelector('[name="queue"]'),
   defaultText: document.querySelector('[name="default-text"]'),
   gallery: document.querySelector('.my-library-film-card'),
-  loading: document.querySelector('.spinner-box'),
 };
 
 // render
@@ -21,22 +17,11 @@ const loadWatchedFilms = () => {
   refs.btnQueue.classList.remove('btn-header__active');
   refs.btnWatched.classList.add('btn-header__active');
 
-  if (watched === null) {
+  if (watched === null || watched.length === 0) {
     return;
   } else {
     clearMarkup();
-    refs.loading.classList.remove('is-hidden');
-    watched.map(id =>
-      newApiFetches
-        .fetchMovieById(id)
-        .then(data => {
-          renderMoviesList(data);
-        })
-        .catch(err => new Error(err))
-        .finally(() => {
-          refs.loading.classList.add('is-hidden');
-        })
-    );
+    watched.map(el => renderMoviesList([el]));
     refs.defaultText.classList.add('is-hidden');
   }
 };
@@ -44,23 +29,12 @@ const loadWatchedFilms = () => {
 const loadQueueFilms = () => {
   refs.btnQueue.classList.add('btn-header__active');
   refs.btnWatched.classList.remove('btn-header__active');
-  if (queue === null) {
+
+  if (queue === null || queue.length === 0) {
     return;
   } else {
     clearMarkup();
-    refs.loading.classList.remove('is-hidden');
-
-    queue.map(id =>
-      newApiFetches
-        .fetchMovieById(id)
-        .then(data => {
-          renderMoviesList(data);
-        })
-        .catch(err => new Error(err))
-        .finally(() => {
-          refs.loading.classList.add('is-hidden');
-        })
-    );
+    queue.map(el => renderMoviesList([el]));
     refs.defaultText.classList.add('is-hidden');
   }
 };

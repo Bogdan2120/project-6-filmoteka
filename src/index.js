@@ -5,9 +5,7 @@ import './js/firebaseGoogleAuth';
 import './js/rendermarkup';
 
 import './js/apiFetches.js';
-//import './js/test-fetchest.js';
 import './js/scroll';
-import './js/makeModalCardFilm';
 
 import './js/modal-window';
 import '../node_modules/basiclightbox/dist/basicLightbox.min.css';

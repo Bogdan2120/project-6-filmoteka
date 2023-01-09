@@ -6,30 +6,40 @@ export const clearMarkup = () => {
 
 export const renderMoviesList = moviesArray => {
   const markupMoviesList = moviesArray
-    .map(({ genre_ids, poster_path, release_date, title, vote_average }) => {
-      let genre = genre_ids.join(', ');
-      if (genre_ids.length > 2) {
-        genre = genre_ids[0] + ', ' + genre_ids[1] + ', ' + 'Other';
-      }
-      return `
+    .map(
+      ({
+        genres,
+        poster_path,
+        release_date,
+        original_title,
+        vote_average,
+        id,
+      }) => {
+        let genre = genres.join(', ');
+        if (genres.length > 2) {
+          genre = genres[0] + ', ' + genres[1] + ', ' + 'Other';
+        }
+        return `
       <li class="film my-library-film">
         <a href="#" class="film__link">
           <div class="film__body-img">
             <img
               src="${poster_path}"
-              alt="${title}"
+              alt="${original_title}"
               class="film__img"
+              data-action="${id}"
             />
           </div>
 
           <div class="film__informations">
-            <p class="film__name">${title}</p>
+            <p class="film__name">${original_title}</p>
             <p class="film__detalies">${genre} | ${release_date}</p>
           </div>
         </a>
       </li>
       `;
-    })
+      }
+    )
     .join('');
 
   refs.gallery.insertAdjacentHTML('beforeend', markupMoviesList);
