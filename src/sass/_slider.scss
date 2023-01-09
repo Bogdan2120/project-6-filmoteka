@@ -47,7 +47,7 @@
 }
 
 .rating-slider {
-  position: absolute;
+  position: relative;
   bottom: 0;
   right: 0;
 
@@ -55,14 +55,14 @@
   align-items: center;
   justify-content: center;
   z-index: 2;
-  width: 38px;
+  
   height: 18px;
 
   font-weight: 500;
   font-size: 13px;
   line-height: 1.1;
   color: #ffffff;
-  background-color: #ff6b08;
+  background-color:rgb(146,50,66);
   border-radius: 5px;
 }
 
