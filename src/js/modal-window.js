@@ -180,7 +180,10 @@ const renfetch = id => {
         dataArr.splice(objIndex, 1);
         localStorage.removeItem('queue');
         save('queue', dataArr);
-        if (document.URL === 'http://localhost:1234/my_library.html#') {
+        if (
+          document.URL ===
+          'https://bogdan2120.github.io/project-6-filmoteka/my_library.html#'
+        ) {
           refresh();
         }
       };
@@ -190,7 +193,10 @@ const renfetch = id => {
         dataArr.splice(objIndex, 1);
         localStorage.removeItem('watched');
         save('watched', dataArr);
-        if (document.URL === 'http://localhost:1234/my_library.html#') {
+        if (
+          document.URL ===
+          'https://bogdan2120.github.io/project-6-filmoteka/my_library.html#'
+        ) {
           refresh();
         }
       };
