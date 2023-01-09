@@ -4,12 +4,17 @@ import NewApiFetches from './apiFetches';
 import Notiflix from 'notiflix';
 // import '../sass/_modal-window.scss';
 import SVG from '../images/symbol-arial.svg';
+// import { renderMoviesList, clearMarkup } from './render-cards';
 const newApiFetches = new NewApiFetches();
 
 const filmModal = document.querySelector('body');
 const loading = document.querySelector('.spinner-box');
 
 filmModal.addEventListener('click', selectFilmSlider);
+
+const refresh = () => {
+  location.reload();
+};
 
 function selectFilmSlider(event) {
   if (event.target.nodeName !== 'IMG') {
@@ -175,6 +180,9 @@ const renfetch = id => {
         dataArr.splice(objIndex, 1);
         localStorage.removeItem('queue');
         save('queue', dataArr);
+        if (document.URL === 'http://localhost:1234/my_library.html#') {
+          refresh();
+        }
       };
       const storageRemWatched = () => {
         let dataArr = load('watched');
@@ -182,6 +190,9 @@ const renfetch = id => {
         dataArr.splice(objIndex, 1);
         localStorage.removeItem('watched');
         save('watched', dataArr);
+        if (document.URL === 'http://localhost:1234/my_library.html#') {
+          refresh();
+        }
       };
 
       refs.buttonWatched.addEventListener('click', storageWatched);

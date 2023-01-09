@@ -1,7 +1,7 @@
 import NewApiFetches from './apiFetches';
 import Notiflix from 'notiflix';
 import Pagination from 'tui-pagination'; //add for pagination
-
+import pagError from '../images/catch-error-pagination.5e5b9d69.jpg';
 const newApiFetches = new NewApiFetches();
 
 const refs = {
@@ -54,9 +54,10 @@ const renderMoviesListTemplate = moviesArray => {
 newApiFetches
   .fetchPopularMovie(1)
   .then(data => {
-    //console.log(data);
+    console.log(data);
     renderMoviesListTemplate(data);
     totalItems = data[0].total_results;
+
     const pagination = new Pagination(refs.pagination, getOptions());
     // clearMarkup();
     renderMoviesListTemplate(data);
@@ -154,6 +155,7 @@ function loadMoreSearchFilms(e) {
       refs.loading.classList.add('is-hidden');
     });
 }
+const pagErrorImg = `<img src="${pagError}"></img>`;
 
 function loadMorePopularFilms(e) {
   const currentPage = e.page;
@@ -164,7 +166,10 @@ function loadMorePopularFilms(e) {
     .then(data => {
       renderMoviesListTemplate(data);
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+      clearMarkup();
+      refs.gallery.insertAdjacentHTML('beforeend', pagErrorImg);
+    })
     .finally(() => {
       refs.loading.classList.add('is-hidden');
     });
