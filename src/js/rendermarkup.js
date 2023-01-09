@@ -26,7 +26,14 @@ const renderMoviesListTemplate = moviesArray => {
           genre = genre_ids[0] + ', ' + genre_ids[1] + ', ' + 'Other';
         }
         return `
-      <li class="film" >
+      <li class="film" data-action='${id}'>
+        <div class="btn-id">
+          <button data-id='${id}' class="btn-youtube-slider">
+            <div class="overlay-btn-youtube-text" data-id='${id}'>
+              <h2 class="btn-youtube-text" data-id='${id}'>Movie Trailer</h2>
+            </div>
+          </button>
+        </div>
         <a href="#" class="film__link">
           <div class="film__body-img">
             <img
