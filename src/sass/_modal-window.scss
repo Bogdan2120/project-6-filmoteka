@@ -67,10 +67,10 @@
   width: 240px;
   height: 357px;
   border-radius: 5px;
-  overflow: hidden;
+  // overflow: hidden;
 
   @media screen and (min-width: 768px) {
-    width: 100%;
+    width: 264px;
     height: 373.55px;
     border-radius: 5px;
   }
@@ -81,7 +81,25 @@
     border-radius: 5px;
   }
 }
-
+.img-card-modal{
+  width: 240px;
+     max-width: none;
+    // height: 357px;
+    
+    overflow: hidden;
+  
+    @media screen and (min-width: 768px) {
+      width: 264px;
+      // height: 373.55px;
+      
+    }
+  
+    @media screen and (min-width: 1280px) {
+      width: 375px;
+      height: 478px;
+      
+    }
+}
 .name-film {
   margin-bottom: 20px;
   margin-top: 20px;
