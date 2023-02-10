@@ -85,10 +85,6 @@
   }
 }
 
-// .footer_svg {
-//   margin: 0 5px;
-// }
-
 .footer-students-btn_nd {
   font-size: 16px;
   line-height: 1.1875;
@@ -170,13 +166,17 @@
 
   align-items: center;
 
-  min-width: 300px;
-  max-height: 500px;
+  // min-width: 300px;
+  // max-height: 500px;
+
+  width: 100vh;
+  height: 100vh;
 
   overflow: auto;
 
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
 
   &::-webkit-scrollbar {
     display: none;
@@ -206,6 +206,8 @@
   margin: 20px;
 
   width: calc((100% - 80px) / 2);
+  // width: calc((100% - 120px) / 3);
+
   @media screen and (min-width: 768px) {
     width: calc((100% - 120px) / 3);
   }
