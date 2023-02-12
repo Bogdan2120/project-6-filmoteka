@@ -2,6 +2,11 @@ import NewApiFetches from './apiFetches';
 import Notiflix from 'notiflix';
 import Pagination from 'tui-pagination'; //add for pagination
 import pagError from '../images/catch-error-pagination.5e5b9d69.jpg';
+
+// export let homePageUrl = document.URL;
+const serializedState = JSON.stringify(document.URL);
+localStorage.setItem('homePage', serializedState);
+
 const newApiFetches = new NewApiFetches();
 
 const refs = {
@@ -61,7 +66,6 @@ const renderMoviesListTemplate = moviesArray => {
 newApiFetches
   .fetchPopularMovie(1)
   .then(data => {
-    console.log(data);
     renderMoviesListTemplate(data);
     totalItems = data[0].total_results;
 
