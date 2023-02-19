@@ -20,6 +20,7 @@ const firebaseConfig = {
   messagingSenderId: '815844014735',
   appId: '1:815844014735:web:4184be206f1dcdb43b4efa',
 };
+import gl from '../images/google.png';
 
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
@@ -62,7 +63,7 @@ function GoogleLogin() {
 }
 function showUserDetails(user) {
   document.getElementById('userDetails').innerHTML = `
-    <img src="${user.photoURL}" class="photo_user">
+    <img style="width: 25px; padding-right: 5px" src="${gl} class="photo_user">
     <p class="name">${user.displayName}</p>
   `;
 }

@@ -77,7 +77,7 @@ export default class NewApiFetches {
     if (response.status !== 200) {
       throw new Error(response.status);
     }
-    console.log('RESP ', response);
+    // console.log('RESP ', response);
 
     response.data.results.map(el => {
       requestArray.push({

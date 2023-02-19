@@ -1,0 +1,77 @@
+<div class='modal-film-card'>
+  <button
+    type='button'
+    class='modal-card-film-close-btn'
+    data-modal-card-film-close
+  >
+    <svg class='modal-card-film-close-btn-icon' width='17' height='17'>
+      <use href='{{SVG}}#close-btn'></use>
+    </svg>
+  </button>
+  <div class='box-img'>
+    <img class='img-card-modal' src='{{poster_path}}' alt='' />
+  </div>
+  <div>
+    <h2 class='name-film'>{{original_title}}</h2>
+    <div class='box-film-params'>
+      <div class='modal-box-key'>
+        <ul class='list-modal'>
+          <li class='list-modal-items'>
+            <p class='list-modal-items__params'>Vote / Votes
+            </p>
+          </li>
+          <li class='list-modal-items'>
+            <p class='list-modal-items__params'>Popularity
+            </p>
+          </li>
+          <li class='list-modal-items'>
+            <p class='list-modal-items__params'>Original Title
+            </p>
+          </li>
+          <li class='list-modal-items'>
+            <p class='list-modal-items__params'>Genre
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <ul class='list-modal'>
+          <li class='list-modal-items'>
+            <p class='list-modal-items__params-value'>
+              <span
+                class='list-modal-items__params-value-average'
+              >{{voteFixed}}</span>
+              /
+              {{vote_count}}
+
+            </p>
+          </li>
+          <li class='list-modal-items'>
+            <p class='list-modal-items__params-value'>{{popularityFixed}}
+            </p>
+          </li>
+          <li class='list-modal-items'>
+            <p class='list-modal-items__params-value'>{{original_title}}
+            </p>
+          </li>
+          <li class='list-modal-items'>
+            <p class='list-modal-items__params-value'>{{genresJoin}}
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p class='discription__params'>About
+      <span class='items__value'>{{overview}}</span>
+    </p>
+    <div class='box-modal-btn'>
+      <button
+        class='modal-watched-btn modal-w modal-submint-btn modal-watched-btn-hower'
+      >Add to watched</button>
+      <button
+        class='modal-queue-btn modal-q modal-submint-btn modal-queue-btn-hower'
+        data-action='add'
+      >Add to queue</button>
+    </div>
+  </div>
+</div>
